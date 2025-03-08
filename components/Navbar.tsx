@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-primary text-white shadow-lg">
+    <nav className="bg-gradient-to-r from-primary to-secondary text-white shadow-lg">
       <div className="container max-w-screen-xl mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
@@ -23,9 +23,10 @@ const Navbar = () => {
             <li key={item}>
               <Link
                 href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                className="hover:text-accent transition duration-300"
+                className="relative py-2 px-4 hover:text-accent transition duration-300 group"
               >
                 {item}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
           ))}
@@ -33,19 +34,23 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? (
+            <X size={28} className="text-white hover:text-accent transition duration-300" />
+          ) : (
+            <Menu size={28} className="text-white hover:text-accent transition duration-300" />
+          )}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-primary border-t border-white/20">
+        <div className="md:hidden bg-gradient-to-r from-primary to-secondary border-t border-white/20">
           <ul className="flex flex-col space-y-4 p-4 text-lg">
             {["Home", "About", "Academics", "Admissions", "Gallery", "Scholarships", "Contact"].map((item) => (
               <li key={item}>
                 <Link
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className="block py-2 px-4 hover:bg-white/10 rounded transition"
+                  className="block py-2 px-4 hover:bg-white/10 rounded transition duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {item}

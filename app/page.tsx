@@ -20,19 +20,21 @@ export default function Home() {
     { id: "contact", component: <Contact key="contact" /> },
   ];
 
-  const [loadedSections, setLoadedSections] = useState([sections[0]]); // Start with About page
+  const [loadedSections, setLoadedSections] = useState(sections.length > 0 ? [sections[0]] : []); // Start with About page if sections is not empty
   const observerRef = useRef<HTMLDivElement | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(15); // Start with image 16 (index 15)
+  const [currentImageIndex, setCurrentImageIndex] = useState(Math.floor(Math.random() * 24)); // Start with a random image
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const lastEntry = entries[0];
         if (lastEntry.isIntersecting && loadedSections.length < sections.length) {
-          setLoadedSections((prev) => [
-            ...prev,
-            sections[prev.length], // Load next section
-          ]);
+          setLoadedSections((prev) => {
+            if (prev.length < sections.length) {
+              return [...prev, sections[prev.length]]; // Load next section
+            }
+            return prev;
+          });
         }
       },
       { threshold: 0.5 } // Trigger when 50% visible
@@ -43,11 +45,11 @@ export default function Home() {
     return () => {
       if (observerRef.current) observer.unobserve(observerRef.current);
     };
-  }, [loadedSections]);
+  }, [loadedSections, sections.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 24); // Cycle through 24 images
+      setCurrentImageIndex(Math.floor(Math.random() * 24)); // Set a random image index
     }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
@@ -162,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Render loaded sections */}
-      {loadedSections.map((section) => section.component)}
+      {loadedSections.map((section) => section?.component)}
 
       {/* Invisible div to trigger the observer */}
       <div ref={observerRef} className="h-10 w-full" />

@@ -38,7 +38,7 @@ export default function Academics() {
               {
                 icon: "🏆",
                 title: "National Recognition",
-                description: "Ranked as the best girls' boarding school in the country for five consecutive years.",
+                description: "Ranked as the best girls' boarding school in the country in 2024.",
               },
               {
                 icon: "📈",
