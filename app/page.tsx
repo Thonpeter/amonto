@@ -22,7 +22,11 @@ export default function Home() {
 
   const [loadedSections, setLoadedSections] = useState(sections.length > 0 ? [sections[0]] : []); // Start with About page if sections is not empty
   const observerRef = useRef<HTMLDivElement | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(Math.floor(Math.random() * 24)); // Start with a random image
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Start with index 0
+
+  useEffect(() => {
+    setCurrentImageIndex(Math.floor(Math.random() * 24)); // Ensure only the client updates this
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,8 +53,8 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex(Math.floor(Math.random() * 24)); // Set a random image index
-    }, 5000); // Change image every 5 seconds
+      setCurrentImageIndex(Math.floor(Math.random() * 24)); // Change image every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
@@ -105,7 +109,7 @@ export default function Home() {
       <section className="py-16 px-8 sm:px-16 bg-primary text-white text-center">
         <h2 className="text-4xl font-bold mb-6 animate-fade-in">Why Choose Amonto Girls Academy?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-10">
-          {[
+          {[ 
             {
               icon: "👩‍🏫",
               title: "Expert Educators",
