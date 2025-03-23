@@ -6,9 +6,9 @@ export default function Academics() {
   // State for testimonial carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
-    { name: "Mary Akech", achievement: "Won 1st place in the National Science Fair 2023.", image: "/gallery/image (20).jpg", quote: "The academy gave me the confidence to pursue my passion for science." },
+    { name: "Mary Akech", achievement: "Won 1st place in the National Science Fair 2024.", image: "/gallery/image (20).jpg", quote: "The academy gave me the confidence to pursue my passion for science." },
     { name: "Sarah Lual", achievement: "Led the debate team to victory in the Regional Championships.", image: "/gallery/image (21).jpg", quote: "Learning to articulate my ideas has transformed my academic journey." },
-    { name: "Grace Auma", achievement: "Accepted to Harvard University with a full scholarship.", image: "/gallery/image (22).jpg", quote: "The rigorous academic program prepared me for success at university level." }
+    { name: "Grace Auma", achievement: "Accepted to join one of the top Universities with a full scholarship.", image: "/gallery/image (22).jpg", quote: "The rigorous academic program prepared me for success at university level." }
   ];
 
   // Stats counter animation
