@@ -24,19 +24,30 @@ export default function Contact() {
     }),
   };
 
+  const floatingAnimation = {
+    float: {
+      y: [0, -20, 0],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <div className="relative min-h-screen bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/gallery/image (1).jpg')" }}>
-      {/* Dark Overlay with Animated Gradient */}
+      {/* Animated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/70 to-black/90 backdrop-blur-sm animate-gradient-xy"></div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
-        {/* Main Title */}
+        {/* Main Title with Enhanced Gradient */}
         <motion.h1
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
           variants={fadeIn}
           custom={0}
-          className="text-5xl sm:text-7xl font-extrabold mb-8 text-center bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent"
+          className="text-5xl sm:text-7xl font-extrabold mb-8 text-center bg-gradient-to-r from-accent via-accent-light to-accent-dark bg-clip-text text-transparent animate-text-gradient"
         >
           Contact Us
         </motion.h1>
@@ -50,7 +61,11 @@ export default function Contact() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {/* Contact Details Card */}
-          <div className="relative p-8 rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="relative p-8 rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500"
+          >
             <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/gallery/image (16).jpg')" }}></div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Get in Touch</h2>
             <p className="text-lg text-white/80 mb-6">For any inquiries, please reach out to us at:</p>
@@ -76,10 +91,14 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form Card */}
-          <div className="relative p-8 rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="relative p-8 rounded-3xl shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500"
+          >
             <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/gallery/image (16).jpg')" }}></div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Send Us a Message</h2>
             <form className="space-y-6 relative z-10">
@@ -99,7 +118,7 @@ export default function Contact() {
                 Send Message
               </button>
             </form>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Google Map Section */}
@@ -125,7 +144,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Decorative Floating Images */}
+        {/* Floating Images with Animation */}
         <motion.img
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
@@ -134,6 +153,7 @@ export default function Contact() {
           src="/gallery/image (16).jpg"
           className="absolute top-10 left-10 w-24 h-24 rounded-full opacity-60"
           alt="Floating decor"
+          whileHover={{ scale: 1.1, rotate: 10 }}
         />
         <motion.img
           initial="hidden"
@@ -143,6 +163,7 @@ export default function Contact() {
           src="/gallery/image (8).jpg"
           className="absolute bottom-10 right-10 w-24 h-24 rounded-full opacity-60"
           alt="Floating decor"
+          whileHover={{ scale: 1.1, rotate: -10 }}
         />
       </div>
     </div>

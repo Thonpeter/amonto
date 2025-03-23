@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Gallery() {
   // Create an array of 17 images with captions.
-  const images = Array.from({ length: 23 }, (_, i) => ({
+  const images = Array.from({ length: 32 }, (_, i) => ({
     src: `/gallery/image (${i + 1}).jpg`,
     alt: `Gallery Image ${i + 1}`,
     caption: `Image ${i + 1}`,
