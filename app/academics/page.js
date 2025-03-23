@@ -12,12 +12,12 @@ export default function Academics() {
   ];
 
   // Stats counter animation
-  const [stats, setStats] = useState([
-    { label: "National Awards", value: 0, target: 42 },
-    { label: "Academic Excellence", value: 0, target: 95 },
-    { label: "Scholarships Received", value: 0, target: 127 },
-    { label: "University Acceptance Rate", value: 0, target: 98 }
-  ]);
+  const stats = [
+    { label: "National Awards", value: 5, target: 5 }, // Hardcoded value
+    { label: "Academic Excellence", value: 85, target: 85 }, // Hardcoded value
+    { label: "Scholarships Received", value: 100, target: 100 }, // Hardcoded value
+    { label: "University Acceptance Rate", value: 98, target: 98 } // Hardcoded value
+  ];
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -26,27 +26,6 @@ export default function Academics() {
     }, 5000);
     return () => clearInterval(interval);
   }, [testimonials.length]);
-
-  // Animate stats counting up
-  useEffect(() => {
-    const interval = setInterval(() => {
-      let allDone = true;
-      setStats(prevStats => 
-        prevStats.map(stat => {
-          if (stat.value < stat.target) {
-            allDone = false;
-            return { 
-              ...stat, 
-              value: Math.min(stat.value + Math.ceil(stat.target / 30), stat.target) 
-            };
-          }
-          return stat;
-        })
-      );
-      if (allDone) clearInterval(interval);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div 
@@ -321,6 +300,7 @@ export default function Academics() {
 
         {/* Academic Resources Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 px-6 sm:px-12">
+        
         {/* Modern Library Project */}
         <div className="bg-blue-900/90 rounded-2xl p-8 shadow-xl border border-blue-500/30 transform transition-all duration-300 hover:scale-105">
           <div className="w-16 h-16 bg-blue-500/30 rounded-full flex items-center justify-center mb-6 text-2xl">📚</div>
@@ -374,7 +354,7 @@ export default function Academics() {
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white text-lg font-semibold rounded-full shadow-lg hover:bg-white/20 transition-all duration-300"
               aria-label="Schedule a Visit"
             >
-              Schedule a Visit
+           
             </a>
           </div>
         </div>
