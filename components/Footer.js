@@ -208,13 +208,6 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <p className="text-sm text-indigo-200 flex items-center">
-              Crafted with <FaHeart className="mx-1 text-red-400 animate-pulse" /> by Thon Peter Mawut
-              <span className="mx-2">•</span>
-              <span className="italic">Computer Science Teacher</span>
-            </p>
-          </div>
         </div>
       </div>
 
