@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
-import { FaFacebook, FaMapMarkerAlt, FaPhone, FaEnvelope, FaHeart, FaChevronUp } from 'react-icons/fa';
+import { FaFacebook, FaMapMarkerAlt, FaPhone, FaEnvelope, FaHeart, FaChevronUp, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,19 +45,19 @@ const Footer = () => {
         </svg>
       </div>
 
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white py-16 px-4">
+      <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 text-white py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {/* School Info */}
             <div className="transform transition duration-500 hover:translate-y-[-8px]">
               <div className="flex flex-col items-center md:items-start space-y-4">
-                <h2 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+                <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
                   Amonto Girls Academy
                 </h2>
                 <p className="text-lg italic text-indigo-100 font-light">We build for the future</p>
-                <div className="mt-4 h-1 w-24 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full"></div>
-                <p className="mt-4 text-indigo-100">
+                <div className="mt-4 h-1 w-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                <p className="mt-4 text-indigo-100 text-center md:text-left">
                   Empowering young women through quality education, leadership skills, and community engagement.
                 </p>
               </div>
@@ -65,54 +65,24 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className="transform transition duration-500 hover:translate-y-[-8px]">
-              <h3 className="text-xl font-bold mb-6 uppercase tracking-wider">Quick Links</h3>
+              <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-white">Quick Links</h3>
               <ul className="space-y-3">
-                <li>
-                  <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
-                    <span className="flex items-center">
-                      <span className="mr-2 h-px w-4 bg-indigo-300"></span>
-                      About Us
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
-                    <span className="flex items-center">
-                      <span className="mr-2 h-px w-4 bg-indigo-300"></span>
-                      Admissions
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
-                    <span className="flex items-center">
-                      <span className="mr-2 h-px w-4 bg-indigo-300"></span>
-                      Academic Programs
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
-                    <span className="flex items-center">
-                      <span className="mr-2 h-px w-4 bg-indigo-300"></span>
-                      Student Life
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
-                    <span className="flex items-center">
-                      <span className="mr-2 h-px w-4 bg-indigo-300"></span>
-                      News & Events
-                    </span>
-                  </a>
-                </li>
+                {['About Us', 'Admissions', 'Academic Programs', 'Student Life', 'News & Events'].map((link, index) => (
+                  <li key={index}>
+                    <a href="#" className="inline-block text-indigo-100 hover:text-white transition-all duration-300 hover:translate-x-2">
+                      <span className="flex items-center">
+                        <span className="mr-2 h-px w-4 bg-indigo-300"></span>
+                        {link}
+                      </span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Contact Info */}
             <div className="transform transition duration-500 hover:translate-y-[-8px]">
-              <h3 className="text-xl font-bold mb-6 uppercase tracking-wider">Contact Us</h3>
+              <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-white">Contact Us</h3>
               <div className="space-y-4">
                 <div className="group flex items-start space-x-3 transition duration-300">
                   <div className="bg-white bg-opacity-20 p-2 rounded-lg group-hover:bg-opacity-30">
@@ -142,7 +112,7 @@ const Footer = () => {
 
                 {/* Social Media */}
                 <div className="mt-6 pt-4 border-t border-indigo-400 border-opacity-30">
-                  <h4 className="text-sm uppercase tracking-wider mb-3">Follow Us</h4>
+                  <h4 className="text-sm uppercase tracking-wider mb-3 text-white">Follow Us</h4>
                   <div className="flex space-x-4">
                     <a
                       href="https://web.facebook.com/profile.php?id=61550269624961"
@@ -156,29 +126,63 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+
+            {/* Newsletter */}
+            <div className="transform transition duration-500 hover:translate-y-[-8px]">
+              <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-white">Stay Updated</h3>
+              <p className="text-indigo-100 mb-4">Subscribe to our newsletter for news, events, and updates.</p>
+              <form className="flex flex-col space-y-4">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="py-3 px-4 bg-white bg-opacity-20 rounded-lg border border-white border-opacity-10 text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30"
+                />
+                <button
+                  type="submit"
+                  className="py-3 px-6 bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-semibold rounded-lg transform hover:translate-y-[-2px] transition duration-300 hover:shadow-lg"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="mt-16 bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-sm border border-white border-opacity-10 shadow-xl transform hover:translate-y-[-5px] transition duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-                <p className="text-indigo-100">Subscribe to our newsletter for news, events, and updates.</p>
+          {/* Creator Section */}
+          <div className="mt-16 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl p-8 backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="flex items-center space-x-6 mb-6 md:mb-0">
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 p-1">
+                    <div className="w-full h-full rounded-full bg-gray-800 overflow-hidden">
+                      <img
+                        src="/facilities/thon.jpg"
+                        alt="Thon Peter Mawut"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 bg-blue-600 rounded-full p-1">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                      <FaHeart className="text-xs text-white" />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">Thon Peter Mawut</h4>
+                  <p className="text-indigo-200">Computer Science Teacher & Developer</p>
+                  <p className="text-indigo-300 text-sm italic">"Empowering the next generation through technology and education"</p>
+                </div>
               </div>
-              <div>
-                <form className="flex flex-col sm:flex-row">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="flex-grow py-3 px-4 bg-white bg-opacity-20 rounded-lg sm:rounded-r-none border border-white border-opacity-10 text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30"
-                  />
-                  <button
-                    type="submit"
-                    className="mt-3 sm:mt-0 py-3 px-6 bg-white text-indigo-700 font-semibold rounded-lg sm:rounded-l-none transform hover:translate-y-[-2px] transition duration-300 hover:shadow-lg"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+              <div className="flex space-x-4">
+                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
+                  <FaLinkedin className="text-xl" />
+                </a>
+                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
+                  <FaGithub className="text-xl" />
+                </a>
+                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
+                  <FaTwitter className="text-xl" />
+                </a>
               </div>
             </div>
           </div>
@@ -198,14 +202,17 @@ const Footer = () => {
               <a href="#" className="text-sm text-indigo-100 hover:text-white transition duration-300">
                 Terms of Service
               </a>
+              <a href="#" className="text-sm text-indigo-100 hover:text-white transition duration-300">
+                Contact
+              </a>
             </div>
           </div>
 
           <div className="mt-8 flex justify-center">
             <p className="text-sm text-indigo-200 flex items-center">
-              Crafted with <FaHeart className="mx-1 text-pink-400" /> by Thon Peter Mawut 
-              <span className="mx-1">|</span> 
-              <span className="italic">"Powered by curiosity and code."</span>
+              Crafted with <FaHeart className="mx-1 text-red-400 animate-pulse" /> by Thon Peter Mawut
+              <span className="mx-2">•</span>
+              <span className="italic">Computer Science Teacher</span>
             </p>
           </div>
         </div>
@@ -214,9 +221,8 @@ const Footer = () => {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed right-8 bottom-8 p-4 bg-indigo-600 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 hover:bg-indigo-700 ${
-          isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed right-8 bottom-8 p-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <FaChevronUp />
       </button>
