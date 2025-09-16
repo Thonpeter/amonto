@@ -124,7 +124,7 @@ export default function About() {
                             custom={1}
                             className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed"
                         >
-                            Empowering young women through quality education on Jebel Amianin, South Sudan
+                            Empowering young women through quality education in South Sudan
                         </motion.p>
 
                         {/* Quick Stats */}
