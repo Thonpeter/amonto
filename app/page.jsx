@@ -3,14 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Navbar from "../components/Navbar"; // Import your existing Navbar
-
-// Import your components
+import Navbar from "../components/Navbar";
 import About from "../components/About";
 import Scholarships from "../components/Scholarships";
 import Academics from "../components/Academics";
 import Contact from "../components/Contacts";
 import Admissions from "../components/Admissions";
+import { FaArrowDown, FaArrowUp, FaQuoteLeft, FaStar } from "react-icons/fa";
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -29,8 +28,6 @@ export default function Home() {
     const element = sectionRefs.current[id];
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-
-      // Update URL hash without scrolling (for browser history)
       if (history.pushState) {
         history.pushState(null, null, `#${id}`);
       } else {
@@ -53,7 +50,6 @@ export default function Home() {
       }
     };
 
-    // Check for hash on initial load
     const initialHash = window.location.hash.substring(1);
     if (initialHash && sectionRefs.current[initialHash]) {
       setTimeout(() => {
@@ -61,9 +57,7 @@ export default function Home() {
       }, 500);
     }
 
-    // Listen for hash changes
     window.addEventListener("hashchange", handleHashChange);
-
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
@@ -119,15 +113,14 @@ export default function Home() {
               "logo": "https://www.amontogirlsacademy.com/logo.png",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Academy Road",
+                "streetAddress": "Jebel Amianin",
                 "addressLocality": "Juba",
                 "addressRegion": "Central Equatoria",
-                "postalCode": "12345",
                 "addressCountry": "South Sudan"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+211-123-456-789",
+                "telephone": "+211-923-666-022",
                 "contactType": "Admissions"
               }
             }
@@ -135,131 +128,220 @@ export default function Home() {
         </script>
       </Head>
 
-      {/* Use your existing Navbar */}
+
 
       {/* Add spacing for the fixed navbar */}
       <div className="pt-20"></div>
 
-      <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
         <section
-          className={`relative h-[550px] sm:h-[700px] bg-cover bg-center transition-all duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
+          className={`relative min-h-screen bg-cover bg-center transition-all duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
             }`}
           style={{
             backgroundImage: `url('/gallery/image (${currentImageIndex + 1}).jpg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
         >
-          {/* Enhanced overlay with gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 
-          <div className="relative z-10 text-center px-6 sm:px-12 flex flex-col items-center justify-center h-full">
-            <h1
-              className="text-5xl sm:text-6xl font-extrabold text-white drop-shadow-lg leading-tight transform transition-all duration-700 ease-out"
-              style={{
-                textShadow: "0 4px 6px rgba(0, 0, 0, 0.5)",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(-20px)"
-              }}
-            >
-              Welcome to Amonto Girls Academy
-            </h1>
-            <p
-              className="mt-4 text-xl sm:text-2xl max-w-2xl mx-auto text-white drop-shadow-lg"
-              style={{
-                textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
-                transition: "all 700ms ease-out 300ms"
-              }}
-            >
-              We build for the future
-            </p>
-            <div
-              className="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(30px)",
-                transition: "all 700ms ease-out 600ms"
-              }}
+          <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
+            <div className="text-center mb-16">
+              <motion.h1
+                initial="hidden"
+                animate={isVisible ? "visible" : "hidden"}
+                variants={fadeIn}
+                custom={0}
+                className="text-6xl sm:text-8xl font-extrabold text-white mb-8"
+              >
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-orange-300">
+                  Amonto Girls Academy
+                </span>
+              </motion.h1>
+              <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
+              <motion.p
+                initial="hidden"
+                animate={isVisible ? "visible" : "hidden"}
+                variants={fadeIn}
+                custom={1}
+                className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed"
+              >
+                Empowering young women through quality education, leadership development, and personal growth
+              </motion.p>
+
+              {/* Quick Stats */}
+              <motion.div
+                initial="hidden"
+                animate={isVisible ? "visible" : "hidden"}
+                variants={fadeIn}
+                custom={2}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto"
+              >
+                {[
+                  { value: "10th", label: "Nationally Ranked" },
+                  { value: "#1", label: "Best Girls School" },
+                  { value: "98%", label: "University Acceptance" },
+                  { value: "100+", label: "Scholarships Awarded" }
+                ].map((stat, index) => (
+                  <div key={index} className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
+                    <div className="text-4xl font-bold text-yellow-300">{stat.value}</div>
+                    <div className="text-white/80 text-sm mt-2">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial="hidden"
+              animate={isVisible ? "visible" : "hidden"}
+              variants={fadeIn}
+              custom={3}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <button
                 onClick={() => scrollToSection("admissions")}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:from-blue-700 hover:to-purple-700"
+                className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
-                Get an admission now!
+                Get an Admssion Now
               </button>
               <button
                 onClick={() => scrollToSection("about")}
-                className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold backdrop-blur-sm bg-white/10 hover:bg-white hover:text-purple-700 transition duration-300 ease-in-out transform hover:scale-105"
+                className="px-8 py-4 border-2 border-white/30 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
               >
                 Learn More
               </button>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Scroll indicator */}
-          <button
-            onClick={() => scrollToSection("about")}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </button>
+            {/* Scroll indicator */}
+            <motion.button
+              initial="hidden"
+              animate={isVisible ? "visible" : "hidden"}
+              variants={fadeIn}
+              custom={4}
+              onClick={() => scrollToSection("about")}
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce mt-16"
+            >
+              <FaArrowDown className="text-2xl" />
+            </motion.button>
+          </div>
         </section>
 
-        {/* About Section */}
+        {/* About Preview Section */}
         <section
           ref={(el) => setSectionRef("about", el)}
-          className="py-16 px-8 sm:px-16 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: "url('/gallery/image (32).jpg')" }}
+          className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900"
         >
-          <div
-            className="max-w-4xl mx-auto bg-white/95 p-8 sm:p-12 rounded-3xl shadow-2xl text-center backdrop-blur-sm transform transition-all duration-700 hover:translate-y-[-5px] hover:shadow-3xl"
-          >
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-1 w-32 mx-auto mb-8 rounded-full"></div>
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-700 mb-6">This is Amonto Girls Academy</h2>
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              Amonto Girls Academy is a prestigious single-girls boarding school located on Jebel Amianin, South Sudan. We offer a modern
-              South Sudan curriculum dedicated to empowering young women through quality education, leadership development, and personal growth.
-            </p>
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center">
+              <h2 className="text-4xl font-bold text-white mb-6">About Amonto Girls Academy</h2>
+              <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
+              <p className="text-white/80 text-lg leading-relaxed mb-8">
+                Amonto Girls Academy is a prestigious single-girls boarding school located on Jebel Amianin, South Sudan.
+                We offer a modern South Sudan curriculum dedicated to empowering young women through quality education,
+                leadership development, and personal growth.
+              </p>
+              <button
+                onClick={() => scrollToSection("about")}
+                className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+              >
+                Discover More
+              </button>
+            </div>
           </div>
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 px-8 sm:px-16 bg-gradient-to-b from-white to-gray-50">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-1 w-32 mx-auto mb-8 rounded-full"></div>
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-700 mb-10">What Our Students & Parents Say</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-10">
+        <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center text-white mb-16">
+              🌟 What Our Community Says
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {[
                 {
                   name: "Asunta Aman",
+                  role: "Student",
                   quote: "Amonto Girls Academy has transformed my life. The teachers are incredibly supportive, and the environment is inspiring.",
+                  image: "/testimonials/student1.jpg"
                 },
                 {
                   name: "Mary Achol",
+                  role: "Alumni",
                   quote: "The global perspective I gained here has prepared me for success in international universities.",
+                  image: "/testimonials/student2.jpg"
                 },
               ].map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="p-8 bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
-                  style={{
-                    transitionDelay: `${index * 100}ms`,
-                    boxShadow: "0 10px 30px -15px rgba(0, 0, 0, 0.15)",
-                  }}
-                >
-                  <div className="mb-4 text-purple-600 text-5xl opacity-30">"</div>
-                  <p className="text-lg italic text-gray-700 mb-6">{testimonial.quote}</p>
-                  <div className="flex items-center justify-center">
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 mr-3"></div>
-                    <p className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-700">
-                      {testimonial.name}
-                    </p>
+                <div key={index} className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                  <div className="flex items-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 p-1">
+                      <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
+                        <span className="text-white text-2xl font-bold">{testimonial.name.charAt(0)}</span>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-white font-semibold">{testimonial.name}</h4>
+                      <p className="text-yellow-200 text-sm">{testimonial.role}</p>
+                    </div>
                   </div>
+                  <div className="text-white/80 italic mb-4">
+                    <FaQuoteLeft className="text-yellow-400 inline mr-2" />
+                    {testimonial.quote}
+                  </div>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Links Section */}
+        <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center text-white mb-16">
+              🚀 Start Your Journey
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {[
+                {
+                  title: "Admissions",
+                  description: "Join our community of excellence",
+                  icon: "🎓",
+                  link: "#admissions",
+                  color: "from-yellow-500 to-orange-600"
+                },
+                {
+                  title: "Scholarships",
+                  description: "Discover funding opportunities",
+                  icon: "🏆",
+                  link: "#scholarships",
+                  color: "from-blue-500 to-purple-600"
+                },
+                {
+                  title: "Contact",
+                  description: "Get in touch with us",
+                  icon: "📞",
+                  link: "#contact",
+                  color: "from-green-500 to-teal-600"
+                },
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-3xl mb-6`}>
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-white/80 mb-6">{item.description}</p>
+                  <button
+                    onClick={() => scrollToSection(item.link.substring(1))}
+                    className={`px-6 py-3 bg-gradient-to-r ${item.color} text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
+                  >
+                    Learn More
+                  </button>
                 </div>
               ))}
             </div>
@@ -273,11 +355,9 @@ export default function Home() {
         <div ref={(el) => setSectionRef("academics", el)}>
           <Academics />
         </div>
-
         <div ref={(el) => setSectionRef("scholarships", el)}>
           <Scholarships />
         </div>
-
         <div ref={(el) => setSectionRef("admissions", el)}>
           <Admissions />
         </div>
@@ -285,16 +365,56 @@ export default function Home() {
           <Contact />
         </div>
 
-        {/* Floating scroll-to-top button */}
+        {/* Scroll to top button */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
+          className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full shadow-lg transform transition-all duration-300 hover:scale-110"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
+          <FaArrowUp className="text-xl" />
         </button>
       </div>
     </>
   );
 }
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.15,
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  }),
+};
+
+// Motion component (simplified for this example)
+const motion = {
+  h1: ({ children, initial, animate, variants, custom, className }) => (
+    <h1 className={className} style={animate === "visible" ? { opacity: 1, transform: "translateY(0)" } : { opacity: 0, transform: "translateY(20px)" }}>
+      {children}
+    </h1>
+  ),
+  p: ({ children, initial, animate, variants, custom, className }) => (
+    <p className={className} style={animate === "visible" ? { opacity: 1, transform: "translateY(0)" } : { opacity: 0, transform: "translateY(20px)" }}>
+      {children}
+    </p>
+  ),
+  div: ({ children, initial, animate, variants, custom, className }) => (
+    <div className={className} style={animate === "visible" ? { opacity: 1, transform: "translateY(0)" } : { opacity: 0, transform: "translateY(20px)" }}>
+      {children}
+    </div>
+  ),
+  button: ({ children, initial, animate, variants, custom, className, onClick }) => (
+    <button
+      className={className}
+      onClick={onClick}
+      style={animate === "visible" ? { opacity: 1, transform: "translateY(0)" } : { opacity: 0, transform: "translateY(20px)" }}
+    >
+      {children}
+    </button>
+  )
+};

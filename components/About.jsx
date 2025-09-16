@@ -351,7 +351,7 @@ export default function About() {
                         className="flex flex-col sm:flex-row gap-6 justify-center"
                     >
                         <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Apply Now
+                            Get an admission
                         </button>
                         <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Schedule Visit
