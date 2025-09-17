@@ -168,26 +168,6 @@ export default function Home() {
                 Empowering young women through quality education, leadership development, and personal growth
               </motion.p>
 
-              {/* Quick Stats */}
-              <motion.div
-                initial="hidden"
-                animate={isVisible ? "visible" : "hidden"}
-                variants={fadeIn}
-                custom={2}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto"
-              >
-                {[
-                  { value: "10th", label: "Nationally Ranked" },
-                  { value: "#1", label: "Best Girls School" },
-                  { value: "98%", label: "University Acceptance" },
-                  { value: "100+", label: "Scholarships Awarded" }
-                ].map((stat, index) => (
-                  <div key={index} className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
-                    <div className="text-4xl font-bold text-yellow-300">{stat.value}</div>
-                    <div className="text-white/80 text-sm mt-2">{stat.label}</div>
-                  </div>
-                ))}
-              </motion.div>
             </div>
 
             {/* CTA Buttons */}
@@ -226,127 +206,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Preview Section */}
-        <section
-          ref={(el) => setSectionRef("about", el)}
-          className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900"
-        >
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center">
-              <h2 className="text-4xl font-bold text-white mb-6">About Amonto Girls Academy</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
-              <p className="text-white/80 text-lg leading-relaxed mb-8">
-                Amonto Girls Academy is a prestigious single-girls boarding school located on Jebel Amianin, South Sudan.
-                We offer a modern South Sudan curriculum dedicated to empowering young women through quality education,
-                leadership development, and personal growth.
-              </p>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
-              >
-                Discover More
-              </button>
-            </div>
-          </div>
-        </section>
 
-        {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center text-white mb-16">
-              🌟 What Our Community Says
-            </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  name: "Asunta Aman",
-                  role: "Student",
-                  quote: "Amonto Girls Academy has transformed my life. The teachers are incredibly supportive, and the environment is inspiring.",
-                  image: "/testimonials/student1.jpg"
-                },
-                {
-                  name: "Mary Achol",
-                  role: "Alumni",
-                  quote: "The global perspective I gained here has prepared me for success in international universities.",
-                  image: "/testimonials/student2.jpg"
-                },
-              ].map((testimonial, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 p-1">
-                      <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                        <span className="text-white text-2xl font-bold">{testimonial.name.charAt(0)}</span>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                      <p className="text-yellow-200 text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <div className="text-white/80 italic mb-4">
-                    <FaQuoteLeft className="text-yellow-400 inline mr-2" />
-                    {testimonial.quote}
-                  </div>
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Links Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center text-white mb-16">
-              🚀 Start Your Journey
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  title: "Admissions",
-                  description: "Join our community of excellence",
-                  icon: "🎓",
-                  link: "#admissions",
-                  color: "from-yellow-500 to-orange-600"
-                },
-                {
-                  title: "Scholarships",
-                  description: "Discover funding opportunities",
-                  icon: "🏆",
-                  link: "#scholarships",
-                  color: "from-blue-500 to-purple-600"
-                },
-                {
-                  title: "Contact",
-                  description: "Get in touch with us",
-                  icon: "📞",
-                  link: "#contact",
-                  color: "from-green-500 to-teal-600"
-                },
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-3xl mb-6`}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-white/80 mb-6">{item.description}</p>
-                  <button
-                    onClick={() => scrollToSection(item.link.substring(1))}
-                    className={`px-6 py-3 bg-gradient-to-r ${item.color} text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
-                  >
-                    Learn More
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Render all components with refs */}
         <div ref={(el) => setSectionRef("about", el)}>

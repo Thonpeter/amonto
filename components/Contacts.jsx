@@ -94,141 +94,7 @@ export default function Contact() {
                 </div>
             </div>
 
-            {/* Contact Details and Form Section */}
-            <div className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        📞 Contact Information
-                    </motion.h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {/* Contact Details */}
-                        <motion.div
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={1}
-                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
-                        >
-                            <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
-
-                            <div className="space-y-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-purple-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                                        <FaMapMarkerAlt className="text-white text-lg" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold">Address</h4>
-                                        <p className="text-white/80">Jebel Amianin, Juba South Sudan</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-blue-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                                        <FaPhone className="text-white text-lg" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold">Phone</h4>
-                                        <p className="text-white/80">+211 (0) 923 666 022</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-yellow-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                                        <FaEnvelope className="text-white text-lg" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold">Email</h4>
-                                        <p className="text-white/80">amontogirlsacademy2024@gmail.com</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                                        <FaFacebook className="text-white text-lg" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold">Social Media</h4>
-                                        <div className="flex gap-4 mt-2">
-                                            <a href="https://web.facebook.com/profile.php?id=61550269624961" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-blue-400 transition duration-300">
-                                                <FaFacebook className="text-2xl" />
-                                            </a>
-                                            <a href="#" className="text-white/80 hover:text-pink-400 transition duration-300">
-                                                <FaInstagram className="text-2xl" />
-                                            </a>
-                                            <a href="#" className="text-white/80 hover:text-blue-300 transition duration-300">
-                                                <FaTwitter className="text-2xl" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Contact Form */}
-                        <motion.div
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={2}
-                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
-                        >
-                            <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
-
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <label className="block text-white/80 mb-2">Your Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleFormChange}
-                                        className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-white/80 mb-2">Email Address</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleFormChange}
-                                        className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-white/80 mb-2">Message</label>
-                                    <textarea
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleFormChange}
-                                        rows="4"
-                                        className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                        required
-                                    ></textarea>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-semibold py-4 rounded-lg hover:shadow-xl transition-all duration-300"
-                                >
-                                    Send Message
-                                </button>
-                            </form>
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
 
             {/* Map Section */}
             <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -316,9 +182,7 @@ export default function Contact() {
                         <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Schedule Campus Tour
                         </button>
-                        <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Request Prospectus
-                        </button>
+
                     </motion.div>
                 </div>
             </div>

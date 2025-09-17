@@ -1,21 +1,48 @@
-"use client";
+// components/Academics.js
+'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Academics() {
-    // State for testimonial carousel
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(true);
+
+        const interval = setInterval(() => {
+            setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    // Animation variants
+    const fadeIn = {
+        hidden: { opacity: 0, y: 20 },
+        visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.15,
+                duration: 0.7,
+                ease: "easeOut",
+            },
+        }),
+    };
+
     const testimonials = [
         {
             name: "Diing Deborah Majok Akuol",
             achievement: "5th Position Nationally in 2024 CSE with 90% - National Arts Contest 2nd Place",
-            image: "/facilities/diing.jpg",
+            image: "/facilities/diing2.jpg",
             quote: "The academy's holistic approach helped me excel in both sciences and arts, preparing me for national competitions."
         },
         {
             name: "Agok Agol Malaak Kwai",
             achievement: "Overall Best Student in National Mathematics Olympiad 2024",
-            image: "/gallery/image (21).jpg",
+            image: "/facilities/agok-agol.jpg",
             quote: "The rigorous mathematics program and dedicated teachers enabled me to achieve excellence at the national level."
         },
         {
@@ -26,7 +53,6 @@ export default function Academics() {
         }
     ];
 
-    // Enhanced stats based on achievements
     const stats = [
         { label: "National Top 5 Ranking", value: "5th", target: 5 },
         { label: "CSE Pass Rate", value: "90%", target: 90 },
@@ -34,38 +60,168 @@ export default function Academics() {
         { label: "Country Ranking 2025", value: "10th", target: 10 }
     ];
 
-    // Auto-rotate testimonials
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, [testimonials.length]);
+    const programs = [
+        {
+            title: "Science Track",
+            subjects: ["Physics", "Biology", "Chemistry", "Computer Science", "Additional Mathematics", "Agriculture"],
+            image: "gallery/502550900_122291977172008987_5048547983340027753_n.jpg",
+            icon: "🔬"
+        },
+        {
+            title: "Arts Track",
+            subjects: ["Geography", "History", "Literature", "Accounting", "Commerce"],
+            image: "gallery/508692558_122294437178008987_428057514277936842_n.jpg",
+            icon: "🎨"
+        },
+        {
+            title: "Core Foundation",
+            subjects: ["Mathematics", "English Language", "CRE", "Citizenship"],
+            image: "/gallery/504376576_122304649508008987_912336966561225463_n.jpg",
+            icon: "📚"
+        }
+    ];
+
+    const achievements2025 = [
+        {
+            category: "National Excellence",
+            icon: "🏆",
+            items: [
+                "10th Position Nationally - 2024 CSE Results (August 2025)",
+                "Diing Deborah Majok Akuol - 5th Best Student in South Sudan (90%)",
+                "Hosted National Debate Championship for 14 schools from 6 states"
+            ]
+        },
+        {
+            category: "Arts & Science Excellence",
+            icon: "🎨",
+            items: [
+                "3rd Place - Central Equatoria State Arts Contest",
+                "Qualified for National Level - Arts Competition",
+                "Best Female Candidate - Diing Deborah Majok (CES Arts & Science)"
+            ]
+        },
+        {
+            category: "Mathematics Excellence",
+            icon: "🧮",
+            items: [
+                "Top 3 Performance - Abut Abuoch Ayuel (Strathmore University Contest)",
+                "Recognized among top mathematics students nationally",
+                "International mathematics competition participation"
+            ]
+        },
+        {
+            category: "Leadership & Debate",
+            icon: "🎤",
+            items: [
+                "National Debate Championship - Team participation (September 2025)",
+                "Leadership in hosting national-level competitions",
+                "Outstanding performance in public speaking"
+            ]
+        }
+    ];
+
+    const achievements2024 = [
+        {
+            category: "Mathematics Olympiad",
+            icon: "🥇",
+            items: [
+                "Overall Best Student - Agok Agol Malaak Kwai",
+                "National Mathematics Olympiad Champion",
+                "Featured in HEM-2024 magazine top 10 female academicians"
+            ]
+        },
+        {
+            category: "National Arts Contest",
+            icon: "🎨",
+            items: [
+                "4th Place School - National Arts Contest",
+                "2nd Best Performer - Diing Deborah Majok Akuol (National)",
+                "Best Female Participant - Central Equatoria State"
+            ]
+        },
+        {
+            category: "Student Recognition",
+            icon: "👑",
+            items: [
+                "Top 10 Female Academicians - Both Agok Agol and Diing Deborah",
+                "Featured in HEM-2024 magazine",
+                "National recognition for outstanding performance"
+            ]
+        },
+        {
+            category: "Scholarship Program",
+            icon: "🎓",
+            items: [
+                "4-Year Scholarships offered to top female Primary 8 students",
+                "Based on Juba Joint Mock exam performance",
+                "Commitment to expanding educational access"
+            ]
+        }
+    ];
+
+    const supportServices = [
+        {
+            title: "Evening Tutorials",
+            description: "Additional learning sessions after regular classes",
+            image: "/academics/evening-tutorials.jpg",
+            icon: "📖"
+        },
+        {
+            title: "Individual Mentoring",
+            description: "Personalized guidance from experienced educators",
+            image: "/academics/mentoring.jpg",
+            icon: "👥"
+        },
+        {
+            title: "University Preparation",
+            description: "Comprehensive counseling for higher education",
+            image: "/academics/university-prep.jpg",
+            icon: "🎓"
+        },
+        {
+            title: "Research Projects",
+            description: "Opportunities for advanced academic exploration",
+            image: "/academics/research-projects.jpg",
+            icon: "🔍"
+        }
+    ];
 
     return (
         <section id="academics" className="min-h-screen py-16">
-            <div
-                className="relative w-full bg-cover bg-center"
-                style={{ backgroundImage: "url('/gallery/image (30).jpg')" }}
-            >
-                {/* Dark overlay for better readability */}
+            {/* Hero Section */}
+            <div className="relative w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/academics/classroom-hero.jpg')" }}>
                 <div className="absolute inset-0 bg-black/50"></div>
-
-                {/* Content */}
                 <div className="relative z-10 px-4 sm:px-6">
-                    {/* Main Title with animation */}
                     <div className="text-center mb-16 pt-24">
-                        <h1 className="text-5xl sm:text-7xl font-extrabold text-white drop-shadow-xl tracking-wide animate-fade-in">
+                        <motion.h1
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-5xl sm:text-7xl font-extrabold text-white drop-shadow-xl tracking-wide"
+                        >
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">Academic</span> Excellence
-                        </h1>
+                        </motion.h1>
                         <div className="w-24 h-1 bg-blue-500 mx-auto mt-6 mb-8"></div>
-                        <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                        <motion.p
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+                        >
                             Leading South Sudan in academic excellence with nationally recognized achievements and top-performing students.
-                        </p>
+                        </motion.p>
                     </div>
 
                     {/* Achievement Highlights Banner */}
-                    <div className="mb-16 bg-gradient-to-r from-green-900/90 to-blue-900/90 rounded-3xl p-8 shadow-2xl border border-green-500/30 max-w-6xl mx-auto">
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={2}
+                        className="mb-16 bg-gradient-to-r from-green-900/90 to-blue-900/90 rounded-3xl p-8 shadow-2xl border border-green-500/30 max-w-6xl mx-auto"
+                    >
                         <h2 className="text-3xl font-bold text-center text-white mb-8">🏆 Recent Outstanding Achievements</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div className="bg-white/10 rounded-xl p-6 text-center">
@@ -84,10 +240,16 @@ export default function Academics() {
                                 <p className="text-white text-sm">Recognized as the Best Girls Boarding School in Juba</p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Stats Counter Section */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={3}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+                    >
                         {stats.map((stat, index) => (
                             <div key={index} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 shadow-xl transform hover:scale-105 transition-all duration-300">
                                 <div className="text-4xl sm:text-5xl font-bold text-white mb-2">
@@ -96,269 +258,273 @@ export default function Academics() {
                                 <div className="text-sm sm:text-base text-blue-200 font-medium uppercase tracking-wider">{stat.label}</div>
                             </div>
                         ))}
-                    </div>
+                    </motion.div>
+                </div>
+            </div>
 
-                    {/* 2025 Academic Achievements */}
-                    <div className="mt-16 bg-gradient-to-r from-blue-900/95 to-indigo-900/95 text-white p-8 sm:p-12 rounded-3xl shadow-2xl max-w-6xl mx-auto border border-blue-500/30">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-blue-200 mb-8 text-center">🌟 2025 Academic Achievements</h2>
+            {/* 2025 Academic Achievements */}
+            <div className="py-20 bg-gradient-to-r from-blue-900/95 to-indigo-900/95">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-blue-200 mb-8 text-center"
+                    >
+                        🌟 2025 Academic Achievements
+                    </motion.h2>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div className="space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-green-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🏆</span>
-                                        National Excellence
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>10th Position Nationally</strong> - 2024 CSE Results (August 2025)</li>
-                                        <li>• <strong>Diing Deborah Majok Akuol</strong> - 3rd Best Student in South Sudan (90%)</li>
-                                        <li>• Hosted National Debate Championship for 14 schools from 6 states</li>
-                                    </ul>
-                                </div>
-
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-purple-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🎨</span>
-                                        Arts & Science Excellence
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>3rd Place</strong> - Central Equatoria State Arts Contest</li>
-                                        <li>• <strong>Qualified for National Level</strong> - Arts Competition</li>
-                                        <li>• <strong>Best Female Candidate</strong> - Diing Deborah Majok (CES Arts & Science)</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-yellow-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🧮</span>
-                                        Mathematics Excellence
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>Top 3 Performance</strong> - Abut Abuoch Ayuel (Strathmore University Contest)</li>
-                                        <li>• Recognized among top mathematics students nationally</li>
-                                        <li>• International mathematics competition participation</li>
-                                    </ul>
-                                </div>
-
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-red-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🎤</span>
-                                        Leadership & Debate
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>National Debate Championship</strong> - Team participation (September 2025)</li>
-                                        <li>• Leadership in hosting national-level competitions</li>
-                                        <li>• Outstanding performance in public speaking</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 2024 Academic Achievements */}
-                    <div className="mt-16 bg-gradient-to-r from-purple-900/95 to-pink-900/95 text-white p-8 sm:p-12 rounded-3xl shadow-2xl max-w-6xl mx-auto border border-purple-500/30">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-purple-200 mb-8 text-center">🎯 2024 Academic Achievements</h2>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div className="space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-blue-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🥇</span>
-                                        Mathematics Olympiad
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>Overall Best Student</strong> - Agok Agol Malaak Kwai</li>
-                                        <li>• National Mathematics Olympiad Champion</li>
-                                        <li>• Featured in HEM-2024 magazine top 10 female academicians</li>
-                                    </ul>
-                                </div>
-
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-green-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🎨</span>
-                                        National Arts Contest
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>4th Place School</strong> - National Arts Contest</li>
-                                        <li>• <strong>2nd Best Performer</strong> - Diing Deborah Majok Akuol (National)</li>
-                                        <li>• <strong>Best Female Participant</strong> - Central Equatoria State</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-orange-500/30 rounded-full flex items-center justify-center mr-3 text-sm">👑</span>
-                                        Student Recognition
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>Top 10 Female Academicians</strong> - Both Agok Agol and Diing Deborah</li>
-                                        <li>• Featured in HEM-2024 magazine</li>
-                                        <li>• National recognition for outstanding performance</li>
-                                    </ul>
-                                </div>
-
-                                <div className="bg-white/10 rounded-xl p-6">
-                                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                        <span className="w-8 h-8 bg-teal-500/30 rounded-full flex items-center justify-center mr-3 text-sm">🎓</span>
-                                        Scholarship Program
-                                    </h3>
-                                    <ul className="space-y-2 text-white/90">
-                                        <li>• <strong>4-Year Scholarships</strong> offered to top female Primary 8 students</li>
-                                        <li>• Based on Juba Joint Mock exam performance</li>
-                                        <li>• Commitment to expanding educational access</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Curriculum Section */}
-                    <div className="mt-16 bg-gradient-to-r from-indigo-900/90 to-blue-900/90 text-white p-8 sm:p-12 rounded-3xl shadow-2xl max-w-6xl mx-auto border border-indigo-500/30">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-blue-200 mb-8 text-center">📚 Our Comprehensive Curriculum</h2>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div className="bg-white/10 rounded-xl p-6">
-                                <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                                    <span className="w-8 h-8 bg-blue-500/30 rounded-full flex items-center justify-center mr-3 text-sm">1</span>
-                                    Core Subjects
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                        {achievements2025.map((achievement, index) => (
+                            <motion.div
+                                key={index}
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={index + 1}
+                                className="bg-white/10 rounded-xl p-6"
+                            >
+                                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                                    <span className="w-8 h-8 bg-blue-500/30 rounded-full flex items-center justify-center mr-3 text-sm">{achievement.icon}</span>
+                                    {achievement.category}
                                 </h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    {[
-                                        "Mathematics",
-                                        "CRE",
-                                        "English Language",
-                                        "Citizenship"
-                                    ].map((subject, index) => (
-                                        <div key={index} className="flex items-center bg-white/5 rounded-lg p-3">
-                                            <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                                            <span className="text-sm">{subject}</span>
-                                        </div>
+                                <ul className="space-y-2 text-white/90">
+                                    {achievement.items.map((item, i) => (
+                                        <li key={i}>• {item}</li>
                                     ))}
-                                </div>
-                            </div>
-
-                            <div className="bg-white/10 rounded-xl p-6">
-                                <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                                    <span className="w-8 h-8 bg-purple-500/30 rounded-full flex items-center justify-center mr-3 text-sm">2</span>
-                                    Science Subjects
-                                </h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    {[
-                                        "Physics",
-                                        "Biology",
-                                        "Chemistry",
-                                        "Computer Science",
-                                        "Additional Mathematics",
-                                        "Agriculture"
-                                    ].map((subject, index) => (
-                                        <div key={index} className="flex items-center bg-white/5 rounded-lg p-3">
-                                            <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                                            <span className="text-sm">{subject}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="bg-white/10 rounded-xl p-6">
-                                <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                                    <span className="w-8 h-8 bg-blue-500/30 rounded-full flex items-center justify-center mr-3 text-sm">3</span>
-                                    Art Subjects
-                                </h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    {[
-                                        "Geography",
-                                        "History",
-                                        "Accounting",
-                                        "Commerce",
-                                        "Literature"
-                                    ].map((subject, index) => (
-                                        <div key={index} className="flex items-center bg-white/5 rounded-lg p-3">
-                                            <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                                            <span className="text-sm">{subject}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 p-6 bg-white/10 rounded-xl">
-                            <h3 className="text-xl font-semibold mb-3 flex items-center">
-                                <span className="text-2xl mr-2">🌍</span>
-                                National & Global Standards
-                            </h3>
-                            <p className="leading-relaxed">
-                                Our curriculum is fully aligned with the South Sudan National Curriculum, ensuring students meet all local educational standards while being prepared for global opportunities.
-                                We emphasize critical thinking, problem-solving, and leadership skills, evidenced by our students' exceptional performance in national competitions and examinations.
-                                Our holistic approach combines academic rigor with practical skills, preparing students to excel in both South Sudan Certificate of Secondary Education and international academic environments.
-                            </p>
-                        </div>
+                                </ul>
+                            </motion.div>
+                        ))}
                     </div>
 
-                    {/* Success Stories - Enhanced Testimonial Carousel */}
-                    <div className="mt-16 max-w-6xl mx-auto">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-12">⭐ Our Champion Students</h2>
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={5}
+                        className="mt-12 bg-white/10 rounded-xl p-6 max-w-4xl mx-auto"
+                    >
+                        <div className="relative h-64 rounded-lg overflow-hidden">
+                            <img
+                                src="/gallery/image (8).jpg"
+                                alt="2025 Award Ceremony"
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                <h3 className="text-white text-xl font-semibold">2025 Awards</h3>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
 
-                        <div className="relative bg-gradient-to-r from-emerald-900/90 to-teal-900/90 rounded-3xl p-8 sm:p-12 shadow-2xl border border-emerald-500/30 overflow-hidden">
-                            {/* Background decorative elements */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/20 rounded-full -mr-16 -mt-16"></div>
-                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-500/20 rounded-full -ml-12 -mb-12"></div>
+            {/* 2024 Academic Achievements */}
+            <div className="py-20 bg-gradient-to-r from-purple-900/95 to-pink-900/95">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-purple-200 mb-8 text-center"
+                    >
+                        🎯 2024 Academic Achievements
+                    </motion.h2>
 
-                            {/* Testimonial content */}
-                            <div className="flex flex-col lg:flex-row items-center gap-8 relative z-10">
-                                <div className="w-full lg:w-1/3 flex-shrink-0">
-                                    <div className="relative">
-                                        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500 to-teal-500 rounded-2xl transform rotate-6"></div>
-                                        <img
-                                            src={testimonials[currentTestimonial].image}
-                                            alt={testimonials[currentTestimonial].name}
-                                            className="w-full h-64 lg:h-80 object-cover rounded-2xl relative z-10 shadow-xl"
-                                        />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                        {achievements2024.map((achievement, index) => (
+                            <motion.div
+                                key={index}
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={index + 1}
+                                className="bg-white/10 rounded-xl p-6"
+                            >
+                                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                                    <span className="w-8 h-8 bg-purple-500/30 rounded-full flex items-center justify-center mr-3 text-sm">{achievement.icon}</span>
+                                    {achievement.category}
+                                </h3>
+                                <ul className="space-y-2 text-white/90">
+                                    {achievement.items.map((item, i) => (
+                                        <li key={i}>• {item}</li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={5}
+                        className="mt-12 bg-white/10 rounded-xl p-6 max-w-4xl mx-auto"
+                    >
+                        <div className="relative h-64 rounded-lg overflow-hidden">
+                            <img
+                                src="/gallery/image (7).jpg"
+                                alt="2024 Mathematics Olympiad"
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                <h3 className="text-white text-xl font-semibold">2024 awards</h3>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Academic Programs */}
+            <div className="py-20 bg-gradient-to-r from-gray-900 to-black">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-white mb-16 text-center"
+                    >
+                        📚 Academic Programs
+                    </motion.h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        {programs.map((program, index) => (
+                            <motion.div
+                                key={index}
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={index + 1}
+                                className="bg-gradient-to-br from-blue-900/50 to-purple-900/50 rounded-2xl overflow-hidden shadow-xl"
+                            >
+                                <div className="relative h-48">
+                                    <img
+                                        src={program.image}
+                                        alt={program.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                                        <h3 className="text-white text-xl font-semibold flex items-center">
+                                            <span className="mr-2">{program.icon}</span>
+                                            {program.title}
+                                        </h3>
                                     </div>
                                 </div>
-
-                                <div className="w-full lg:w-2/3">
-                                    <div className="text-6xl text-teal-200 mb-6 text-center lg:text-left">"</div>
-                                    <p className="text-xl italic text-white/90 mb-6 text-center lg:text-left">
-                                        {testimonials[currentTestimonial].quote}
-                                    </p>
-                                    <div className="mb-6 text-center lg:text-right">
-                                        <div className="text-2xl font-bold text-white">{testimonials[currentTestimonial].name}</div>
-                                        <div className="text-teal-200 font-medium">{testimonials[currentTestimonial].achievement}</div>
-                                    </div>
-
-                                    {/* Navigation dots */}
-                                    <div className="flex justify-center lg:justify-end gap-3 mt-8">
-                                        {testimonials.map((_, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => setCurrentTestimonial(index)}
-                                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial
-                                                    ? 'bg-teal-400 w-8'
-                                                    : 'bg-white/30 hover:bg-white/50'
-                                                    }`}
-                                            />
+                                <div className="p-6">
+                                    <h4 className="text-blue-300 mb-3">Subjects Offered:</h4>
+                                    <ul className="space-y-2">
+                                        {program.subjects.map((subject, i) => (
+                                            <li key={i} className="text-white/90 flex items-center">
+                                                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                                {subject}
+                                            </li>
                                         ))}
-                                    </div>
+                                    </ul>
                                 </div>
-                            </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
-                            {/* Achievement highlight banner */}
-                            <div className="mt-8 pt-8 border-t border-white/20">
-                                <div className="text-center">
-                                    <p className="text-teal-100 text-sm font-medium">
-                                        🏆 Nationally Recognized Excellence • 🥇 Top 5 Student Performance • 🌟 Best Girls School in Juba
-                                    </p>
-                                </div>
+            {/* Student Success Stories */}
+            <div className="py-20 bg-gradient-to-r from-purple-900 to-blue-900">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-white mb-16 text-center"
+                    >
+                        🌟 Student Success Stories
+                    </motion.h2>
+
+                    <div className="max-w-4xl mx-auto">
+                        <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+                            <img
+                                src={testimonials[currentTestimonial].image}
+                                alt={testimonials[currentTestimonial].name}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                                <h3 className="text-2xl font-bold text-white mb-2">{testimonials[currentTestimonial].name}</h3>
+                                <p className="text-yellow-300 mb-4">{testimonials[currentTestimonial].achievement}</p>
+                                <p className="text-white/90 italic">"{testimonials[currentTestimonial].quote}"</p>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Bottom padding for mobile */}
-                    <div className="pb-16"></div>
+                        <div className="flex justify-center mt-6 space-x-4">
+                            {testimonials.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentTestimonial(index)}
+                                    className={`w-3 h-3 rounded-full ${index === currentTestimonial ? 'bg-yellow-400' : 'bg-white/30'}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Academic Support Services */}
+            <div className="py-20 bg-gradient-to-r from-gray-800 to-gray-900">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-white mb-16 text-center"
+                    >
+                        📖 Academic Support Services
+                    </motion.h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                        {supportServices.map((service, index) => (
+                            <motion.div
+                                key={index}
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={index + 1}
+                                className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded-2xl p-6 text-center shadow-xl border border-white/10"
+                            >
+                                <div className="text-4xl mb-4">{service.icon}</div>
+                                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                                <p className="text-white/80">{service.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Final CTA */}
+            <div className="py-16 bg-gradient-to-r from-blue-900 to-purple-900">
+                <div className="container mx-auto px-6 text-center">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-3xl sm:text-4xl font-bold text-white mb-6"
+                    >
+                        Join Our Academic Excellence Journey
+                    </motion.h2>
+
+                    <motion.p
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={1}
+                        className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
+                    >
+                        Discover how our academic programs can help you achieve your full potential and prepare for university success.
+                    </motion.p>
+
+
                 </div>
             </div>
         </section>

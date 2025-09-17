@@ -169,21 +169,11 @@ const Footer = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-white">Thon Peter Mawut</h4>
-                  <p className="text-indigo-200">Computer Science Teacher & Developer</p>
+                  <p className="text-indigo-200">Computer Science Teacher & Developer, AGASS</p>
                   <p className="text-indigo-300 text-sm italic">"Empowering the next generation through technology and education"</p>
                 </div>
               </div>
-              <div className="flex space-x-4">
-                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
-                  <FaLinkedin className="text-xl" />
-                </a>
-                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
-                  <FaGithub className="text-xl" />
-                </a>
-                <a href="#" className="bg-white bg-opacity-20 p-3 rounded-full transition-all duration-300 hover:bg-opacity-30 hover:scale-110">
-                  <FaTwitter className="text-xl" />
-                </a>
-              </div>
+
             </div>
           </div>
 

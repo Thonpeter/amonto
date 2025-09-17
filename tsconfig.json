@@ -37,7 +37,7 @@
     "components/Contacts.jsx",
     "components/Contacts.jsx",
     "app/page.jsx",
-    "components/Navbar.jsx"
+    "components/Navbar.js"
   ],
   "exclude": [
     "node_modules"
