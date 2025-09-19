@@ -222,6 +222,7 @@ export default function About() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                             </div>
+
                         </motion.div>
 
                         {/* Our Mission */}
@@ -243,6 +244,46 @@ export default function About() {
                             </p>
                         </motion.div>
                     </div>
+                </div>
+            </div>
+            {/* Student Testimonials Video */}
+            <div className="py-20 bg-gradient-to-b from-purple-900 to-indigo-900">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="max-w-4xl mx-auto text-center mb-12"
+                    >
+                        <h2 className="text-4xl font-bold text-white mb-6">🎬 Hear From Our Students</h2>
+                        <p className="text-xl text-white/80">
+                            Listen to our students share their experiences at Amonto Girls Academy
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={1}
+                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 max-w-4xl mx-auto"
+                    >
+                        <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                            <video
+                                controls
+                                className="w-full h-full object-cover"
+                                poster="/facilities/modern.jpg" // Optional: add a poster frame
+                                preload="metadata"
+                            >
+                                <source src="./vid/senior1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p className="text-white/80 text-center mt-4 italic">
+                            Our students share their journey and experiences at Amonto Girls Academy
+                        </p>
+                    </motion.div>
                 </div>
             </div>
 
@@ -283,11 +324,34 @@ export default function About() {
                         ))}
                     </div>
 
+                    {/* Director's Video Section */}
                     <motion.div
                         initial="hidden"
                         animate={isLoaded ? "visible" : "hidden"}
                         variants={fadeIn}
                         custom={4}
+                        className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
+                    >
+                        <h3 className="text-2xl font-bold text-white text-center mb-6">Message from Our Director</h3>
+                        <div className="aspect-video rounded-xl overflow-hidden">
+                            <video
+                                controls
+
+                            >
+                                <source src="./vid/noble.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p className="text-white/80 text-center mt-4">
+                            Hear directly from Noble Arem Riak about his vision for Amonto Girls Academy
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={5}
                         className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
                     >
                         <h3 className="text-2xl font-bold text-white text-center mb-6">Our Beginning</h3>
@@ -360,34 +424,128 @@ export default function About() {
             </div>
 
             {/* Why Choose Us Section */}
-            <div className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900">
-                <div className="container mx-auto px-6">
+            <div className="relative py-24 overflow-hidden">
+                {/* Background with safe.jpg and overlay */}
+                <div
+                    className="absolute inset-0 z-0 bg-blue-900/90"
+                    style={{
+                        backgroundImage: "url('./facilities/safe.jpg')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundAttachment: "fixed"
+                    }}
+                ></div>
+
+                <div className="container relative z-10 mx-auto px-6">
                     <motion.h2
                         initial="hidden"
                         animate={isLoaded ? "visible" : "hidden"}
                         variants={fadeIn}
                         custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
+                        className="text-5xl font-bold text-center text-white mb-6"
                     >
-                        🌟 Why Choose Amonto Girls Academy?
+                        Why Choose Amonto Girls Academy?
                     </motion.h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={index}
-                                initial="hidden"
-                                animate={isLoaded ? "visible" : "hidden"}
-                                variants={fadeIn}
-                                custom={index + 1}
-                                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center hover:border-yellow-500/30 transition-all duration-300"
-                            >
-                                <div className="text-yellow-400 mb-4 flex justify-center">{feature.icon}</div>
-                                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-                                <p className="text-white/80">{feature.description}</p>
-                            </motion.div>
-                        ))}
+                    <motion.p
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0.5}
+                        className="text-xl text-center text-white/90 mb-16 max-w-3xl mx-auto"
+                    >
+                        Discover the exceptional qualities that make our academy the premier choice for girls' education
+                    </motion.p>
+
+                    {/* Features Grid with Images */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        {features.map((feature, index) => {
+                            // Assign appropriate images based on feature content
+                            let imagePath = "";
+                            switch (index) {
+                                case 0: // Safe Environment
+                                    imagePath = "./facilities/safe2.jpg";
+                                    break;
+                                case 1: // Modern Facilities
+                                    imagePath = "./facilities/modern.jpg";
+                                    break;
+                                case 2: // Diverse Programs
+                                    imagePath = "./facilities/program1.jpg";
+                                    break;
+                                case 3: // Extracurricular
+                                    imagePath = "./facilities/dance.jpg";
+                                    break;
+                                case 4: // Orientation
+                                    imagePath = "./facilities/orient.jpg";
+                                    break;
+                                case 5: // Additional Programs
+                                    imagePath = "./facilities/program3.jpg";
+                                    break;
+                                default:
+                                    imagePath = "./facilities/modern.jpg";
+                            }
+
+                            return (
+                                <motion.div
+                                    key={index}
+                                    initial="hidden"
+                                    animate={isLoaded ? "visible" : "hidden"}
+                                    variants={fadeIn}
+                                    custom={index + 1}
+                                    className="group bg-transparent rounded-2xl overflow-hidden border border-white/20 hover:border-yellow-500/30 transition-all duration-500 hover:shadow-2xl"
+                                >
+                                    {/* Image Container */}
+                                    <div className="h-48 overflow-hidden relative">
+                                        <div
+                                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                            style={{ backgroundImage: `url(${imagePath})` }}
+                                        >
+                                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+                                        </div>
+
+                                        {/* Icon overlay */}
+                                        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white text-lg shadow-lg">
+                                            {feature.icon}
+                                        </div>
+                                    </div>
+
+                                    {/* Content with friendly dark blue background */}
+                                    <div className="p-6 bg-blue-800/95 border-t border-blue-700">
+                                        <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                                        <p className="text-blue-100 mb-4 leading-relaxed">{feature.description}</p>
+
+
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
+
+                    {/* Stats section */}
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={features.length + 1}
+                        className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center"
+                    >
+                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                            <div className="text-4xl font-bold text-yellow-400 mb-2">98%</div>
+                            <div className="text-blue-100">Academic Success</div>
+                        </div>
+                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                            <div className="text-4xl font-bold text-yellow-400 mb-2">100%</div>
+                            <div className="text-blue-100">Safe Environment</div>
+                        </div>
+                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                            <div className="text-4xl font-bold text-yellow-400 mb-2">25+</div>
+                            <div className="text-blue-100">Programs</div>
+                        </div>
+                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                            <div className="text-4xl font-bold text-yellow-400 mb-2">15:1</div>
+                            <div className="text-blue-100">Student-Teacher Ratio</div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 

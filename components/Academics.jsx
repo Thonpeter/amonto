@@ -242,12 +242,50 @@ export default function Academics() {
                         </div>
                     </motion.div>
 
-                    {/* Stats Counter Section */}
+                    {/* Winning Celebration Video */}
                     <motion.div
                         initial="hidden"
                         animate={isLoaded ? "visible" : "hidden"}
                         variants={fadeIn}
                         custom={3}
+                        className="mb-16 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-yellow-400/50"
+                    >
+                        <div className="relative aspect-video">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                                poster="/gallery/trophy-celebration.jpg" // Use a relevant poster image
+                            >
+                                <source src="./vid/win.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
+                                <div className="text-center w-full">
+                                    <h3 className="text-2xl font-bold text-yellow-300 mb-2">Celebrating Success Together</h3>
+                                    <p className="text-white/90">Our students celebrating their achievements and trophies</p>
+                                </div>
+                            </div>
+
+                            {/* Play icon overlay for mobile devices */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <div className="bg-black/40 rounded-full p-3">
+                                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Stats Counter Section */}
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={4}
                         className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
                     >
                         {stats.map((stat, index) => (
@@ -429,6 +467,7 @@ export default function Academics() {
                 </div>
             </div>
 
+
             {/* Student Success Stories */}
             <div className="py-20 bg-gradient-to-r from-purple-900 to-blue-900">
                 <div className="container mx-auto px-6">
@@ -443,6 +482,32 @@ export default function Academics() {
                     </motion.h2>
 
                     <div className="max-w-4xl mx-auto">
+                        {/* Video Testimonial Section */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="mb-12 bg-gradient-to-br from-purple-800/30 to-blue-800/30 rounded-2xl p-8 border border-white/20"
+                        >
+                            <h3 className="text-2xl font-bold text-white text-center mb-6">Hear From Our Students</h3>
+                            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                <video
+                                    controls
+
+                                >
+                                    <source src="./vid/adau.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div className="text-center mt-4">
+                                <p className="text-yellow-300 font-semibold">Adau Quila</p>
+                                <p className="text-white/80">Senior Three Science Student</p>
+                                <p className="text-white/70 italic mt-2">"Academics is what helps us to be prosperous in life, in Amonto, we uphold Academics"</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Existing Testimonial Carousel */}
                         <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                             <img
                                 src={testimonials[currentTestimonial].image}

@@ -14,13 +14,54 @@ import { FaArrowDown, FaArrowUp, FaQuoteLeft, FaStar } from "react-icons/fa";
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const sectionRefs = useRef({});
+  const videoRef = useRef(null);
 
   // Initialize random image on load
   useEffect(() => {
     setCurrentImageIndex(Math.floor(Math.random() * 33));
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Handle video loading and playback
+  useEffect(() => {
+    const videoElement = videoRef.current;
+
+    if (videoElement) {
+      const handleLoadedData = () => {
+        setIsVideoLoaded(true);
+      };
+
+      const handlePlay = () => {
+        setIsVideoPlaying(true);
+      };
+
+      const handlePause = () => {
+        setIsVideoPlaying(false);
+      };
+
+      videoElement.addEventListener('loadeddata', handleLoadedData);
+      videoElement.addEventListener('play', handlePlay);
+      videoElement.addEventListener('pause', handlePause);
+
+      // Try to autoplay
+      const playPromise = videoElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Autoplay prevented:", error);
+          setIsVideoPlaying(false);
+        });
+      }
+
+      return () => {
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('play', handlePlay);
+        videoElement.removeEventListener('pause', handlePause);
+      };
+    }
   }, []);
 
   // Scroll to section function
@@ -63,17 +104,17 @@ export default function Home() {
     };
   }, []);
 
-  // Slideshow effect for background images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => {
-        const nextIndex = Math.floor(Math.random() * 24);
-        return nextIndex === prev ? (nextIndex + 1) % 24 : nextIndex;
+  // Play video on manual activation
+  const playVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.play().then(() => {
+        setIsVideoLoaded(true);
+        setIsVideoPlaying(true);
+      }).catch(error => {
+        console.log("Video play failed:", error);
       });
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, []);
+    }
+  };
 
   return (
     <>
@@ -128,21 +169,59 @@ export default function Home() {
         </script>
       </Head>
 
-
-
       {/* Add spacing for the fixed navbar */}
       <div className="pt-20"></div>
 
       <div className="flex flex-col min-h-screen">
-        {/* Hero Section */}
+        {/* Hero Section with Video Background */}
         <section
-          className={`relative min-h-screen bg-cover bg-center transition-all duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
+          className={`relative min-h-screen transition-all duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
             }`}
-          style={{
-            backgroundImage: `url('/gallery/image (${currentImageIndex + 1}).jpg')`,
-          }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className={`w-full h-full object-cover ${isVideoPlaying ? 'block' : 'hidden'}`}
+              poster={`/gallery/image (${currentImageIndex + 1}).jpg`}
+              onLoadedData={() => setIsVideoLoaded(true)}
+              onPlay={() => setIsVideoPlaying(true)}
+            >
+              <source src="./vid/amonto.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            {/* Fallback for browsers that don't support video or when video is not playing */}
+            {!isVideoPlaying && (
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url('/gallery/image (${currentImageIndex + 1}).jpg')`,
+                }}
+              ></div>
+            )}
+
+            {/* Play button for mobile devices that block autoplay */}
+            {!isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                  onClick={playVideo}
+                  className="bg-white/20 backdrop-blur-lg rounded-full p-4 text-white hover:bg-white/30 transition-all z-10"
+                >
+                  <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Gradient Overlay - Fixed positioning issue */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 z-1"></div>
 
           <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
             <div className="text-center mb-16">
@@ -167,7 +246,6 @@ export default function Home() {
               >
                 Empowering young women through quality education, leadership development, and personal growth
               </motion.p>
-
             </div>
 
             {/* CTA Buttons */}
@@ -182,7 +260,7 @@ export default function Home() {
                 onClick={() => scrollToSection("admissions")}
                 className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
-                Get an Admssion Now
+                Get an Admission Now
               </button>
               <button
                 onClick={() => scrollToSection("about")}
@@ -199,15 +277,12 @@ export default function Home() {
               variants={fadeIn}
               custom={4}
               onClick={() => scrollToSection("about")}
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce mt-16"
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce mt-16 z-20"
             >
               <FaArrowDown className="text-2xl" />
             </motion.button>
           </div>
         </section>
-
-
-
 
         {/* Render all components with refs */}
         <div ref={(el) => setSectionRef("about", el)}>

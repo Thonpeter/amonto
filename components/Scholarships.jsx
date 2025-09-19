@@ -338,6 +338,123 @@ export default function Scholarships() {
                     </motion.div>
                 </div>
             </div>
+            {/* Aluel's Dream Section */}
+            <div className="py-20 bg-gradient-to-b from-gray-800 to-gray-900">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={0}
+                        className="text-4xl font-bold text-center text-white mb-16"
+                    >
+                        🌟 Dreams of Amonto
+                    </motion.h2>
+
+                    {/* Aluel Moch Nhom Video Testimonial */}
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={1}
+                        className="bg-gradient-to-br from-yellow-900/20 to-orange-800/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto mb-16"
+                    >
+                        <div className="text-center mb-8">
+                            <h3 className="text-3xl font-bold text-white mb-2">A Dream to Join Amonto</h3>
+                            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4"></div>
+                            <p className="text-white/80">Primary school girl with big dreams</p>
+                        </div>
+
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-6 group">
+                            {/* Video container with proper aspect ratio handling */}
+                            <div className="relative aspect-video bg-black">
+                                <video
+                                    src="./vid/aluel.mp4"
+                                    controls
+                                    autoPlay
+                                    muted
+                                    playsInline
+                                    loop
+
+                                    onError={(e) => {
+                                        // Fallback if video fails to load
+                                        e.target.style.display = 'none';
+                                        const fallback = document.getElementById('video-fallback');
+                                        if (fallback) fallback.style.display = 'flex';
+                                    }}
+                                    onPlay={(e) => {
+                                        // Hide play button when video plays
+                                        const playButton = document.getElementById('play-button-overlay');
+                                        if (playButton) playButton.style.display = 'none';
+                                    }}
+                                    onPause={(e) => {
+                                        // Show play button when video pauses
+                                        const playButton = document.getElementById('play-button-overlay');
+                                        if (playButton) playButton.style.display = 'flex';
+                                    }}
+                                >
+                                    Your browser does not support the video tag.
+                                </video>
+
+                                {/* Fallback content if video fails to load */}
+                                <div id="video-fallback" className="absolute inset-0 hidden flex-col items-center justify-center bg-gradient-to-br from-yellow-900/30 to-orange-900/30 p-4">
+                                    <FaUniversity className="text-5xl text-yellow-400 mb-4" />
+                                    <p className="text-white text-lg font-semibold text-center mb-2">Aluel's Testimonial</p>
+                                    <p className="text-yellow-200 text-sm text-center">"I called this place my home, because Noble has shown me a love for a father"</p>
+                                    <button className="mt-4 px-4 py-2 bg-yellow-500 text-gray-900 rounded-lg font-semibold">
+                                        Watch Video
+                                    </button>
+                                </div>
+
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-300"></div>
+
+                                {/* Dream element overlay */}
+                                <div className="absolute top-4 right-4">
+                                    <div className="bg-yellow-500/90 text-gray-900 font-bold px-3 py-1 rounded-full text-sm flex items-center">
+                                        <FaUniversity className="mr-1" /> Dreaming of Amonto
+                                    </div>
+                                </div>
+
+                                {/* Play button overlay */}
+                                <div id="play-button-overlay" className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-16 h-16 bg-yellow-500/80 rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                                        <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-center px-4">
+                            <div className="bg-black/30 rounded-xl p-5 border border-yellow-500/20">
+                                <p className="text-white/90 text-lg italic mb-3">
+                                    "I called this place my home, because Noble [The School Director] has shown me a love for a father"
+                                </p>
+                                <p className="text-yellow-300 font-semibold">- Aluel Moch-nhom Awuor, The girl with a dream</p>
+                            </div>
+
+                            <div className="mt-6 bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-xl p-4">
+                                <p className="text-white/80 text-sm">
+                                    Aluel dreams of joining Amonto Girls Academy and is working hard to achieve the academic excellence needed for our scholarship program.
+                                </p>
+                            </div>
+
+                            {/* Eleanor Roosevelt Quote Section */}
+                            <div className="mt-8 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl p-5 border border-purple-500/20">
+                                <div className="text-white/80 italic text-lg text-center">
+                                    "The future belongs to those who believe in the beauty of their dreams."
+                                </div>
+                                <div className="text-purple-300 font-semibold text-center mt-3">
+                                    - Eleanor Roosevelt
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </div>
 
             {/* Application Process */}
             <div className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
