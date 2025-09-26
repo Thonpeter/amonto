@@ -68,13 +68,13 @@ export default function Admissions() {
     const admissionSteps = [
         {
             title: "Campus Tour & Inquiry",
-            description: "Schedule a personalized campus visit, meet our staff, and experience our facilities firsthand.",
+            description: "Schedule a personalized campus visit to pick the admission form from our staff i.e the school bursar and the head of academics.",
             image: "/facilities/tour.jpg",
             icon: "🚶‍♀️"
         },
         {
             title: "Application Submission",
-            description: "Complete the admission application and submit all required documents for review.",
+            description: "Complete the admission application and submit all required documents for review.For the S.1, apply with your temporary testimonial, the senior 2, 3 and 4 are required to come with their report cards and Primary 8 cerificates",
             image: "/facilities/winner.jpg",
             icon: "📝"
         },
@@ -197,21 +197,7 @@ export default function Admissions() {
                         </div>
                     </motion.div>
 
-                    {/* CTA Buttons */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={3}
-                        className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-                    >
-                        <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Get Admission Now
-                        </button>
-                        <button className="px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Schedule Campus Tour
-                        </button>
-                    </motion.div>
+
                 </div>
             </div>
 
@@ -225,7 +211,7 @@ export default function Admissions() {
                         custom={0}
                         className="text-3xl sm:text-4xl font-bold text-white mb-16 text-center"
                     >
-                        🏫 World-Class Facilities
+                        🏫 Our Facilities
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -465,65 +451,6 @@ export default function Admissions() {
                 </div>
             </div>
 
-            {/* Financial Aid */}
-            <div className="py-20 bg-gradient-to-r from-green-900 to-teal-900">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-3xl sm:text-4xl font-bold text-white mb-16 text-center"
-                    >
-                        💰 Financial Aid & Scholarships
-                    </motion.h2>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-4xl mx-auto"
-                    >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 className="text-2xl font-bold text-white mb-6">Financial Support Options</h3>
-                                <ul className="space-y-4 text-white/90">
-                                    <li className="flex items-start">
-                                        <span className="text-green-400 text-xl mr-3">✓</span>
-                                        <span>Merit-based scholarships for outstanding academic performance</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="text-green-400 text-xl mr-3">✓</span>
-                                        <span>Flexible payment plans to accommodate family budgets</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="text-green-400 text-xl mr-3">✓</span>
-                                        <span>Special consideration for exceptional students with financial need</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="text-green-400 text-xl mr-3">✓</span>
-                                        <span>Financial counseling available for families</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div className="relative h-64 rounded-xl overflow-hidden">
-                                    <img
-                                        src="/facilities/safe.jpg"
-                                        alt="Scholarship recipients"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                                        <h3 className="text-white text-lg font-semibold">Scholarship Award Ceremony</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
 
             {/* Final CTA */}
             <div className="py-16 bg-gradient-to-r from-blue-900 to-purple-900">
@@ -554,13 +481,13 @@ export default function Admissions() {
                         variants={fadeIn}
                         custom={2}
                         className="flex flex-col sm:flex-row gap-6 justify-center"
-                    >
+                    >{/*
                         <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Get Admission Now
                         </button>
                         <button className="px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Schedule Campus Tour
-                        </button>
+                        </button> */}
                     </motion.div>
 
                     <motion.p
@@ -572,6 +499,27 @@ export default function Admissions() {
                     >
                         Year-round admission availability for Forms 1-4
                     </motion.p>
+                    <motion.div
+                        initial="hidden"
+                        animate={isLoaded ? "visible" : "hidden"}
+                        variants={fadeIn}
+                        custom={4}
+                        className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
+                    >
+                        <h3 className="text-2xl font-bold text-white text-center mb-6">We are deeply rooted to our diversed cultures</h3>
+                        <div className="aspect-video rounded-xl overflow-hidden">
+                            <video
+                                controls
+
+                            >
+                                <source src="./vid/cel.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p className="text-white/80 text-center mt-4">
+                            Not only in academic, we also take lead in our cultural heritage
+                        </p>
+                    </motion.div>
                 </div>
             </div>
         </section>

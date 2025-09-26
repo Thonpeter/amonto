@@ -125,6 +125,7 @@ const Navbar = () => {
     },
     { name: "Scholarships", path: "/scholarships", sectionId: "scholarships" },
     { name: "Contact", path: "/contact", sectionId: "contact" },
+    { name: "Co-curricular", path: "/co", sectionId: "co" },
   ];
 
   // Function to handle navigation

@@ -9,6 +9,8 @@ import Scholarships from "../components/Scholarships";
 import Academics from "../components/Academics";
 import Contact from "../components/Contacts";
 import Admissions from "../components/Admissions";
+import Co from "../components/Co";
+
 import { FaArrowDown, FaArrowUp, FaQuoteLeft, FaStar } from "react-icons/fa";
 
 export default function Home() {
@@ -244,31 +246,10 @@ export default function Home() {
                 custom={1}
                 className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed"
               >
-                Empowering young women through quality education, leadership development, and personal growth
+                Empowering girl-child through quality education, leadership development, and personal growth
               </motion.p>
             </div>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial="hidden"
-              animate={isVisible ? "visible" : "hidden"}
-              variants={fadeIn}
-              custom={3}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <button
-                onClick={() => scrollToSection("admissions")}
-                className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-              >
-                Get an Admission Now
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="px-8 py-4 border-2 border-white/30 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
-              >
-                Learn More
-              </button>
-            </motion.div>
 
             {/* Scroll indicator */}
             <motion.button
@@ -297,9 +278,13 @@ export default function Home() {
         <div ref={(el) => setSectionRef("admissions", el)}>
           <Admissions />
         </div>
+        <div ref={(el) => setSectionRef("co", el)}>
+          <Co />
+        </div>
         <div ref={(el) => setSectionRef("contact", el)}>
           <Contact />
         </div>
+
 
         {/* Scroll to top button */}
         <button

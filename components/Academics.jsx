@@ -54,7 +54,7 @@ export default function Academics() {
     ];
 
     const stats = [
-        { label: "National Top 5 Ranking", value: "5th", target: 5 },
+        { label: "National Top 3 Ranking", value: "3rd", target: 3 },
         { label: "CSE Pass Rate", value: "90%", target: 90 },
         { label: "National Awards Won", value: "12+", target: 12 },
         { label: "Country Ranking 2025", value: "10th", target: 10 }
@@ -113,6 +113,7 @@ export default function Academics() {
             category: "Leadership & Debate",
             icon: "🎤",
             items: [
+                " TBA Best debate speaker- Adau Aquila Hakim",
                 "National Debate Championship - Team participation (September 2025)",
                 "Leadership in hosting national-level competitions",
                 "Outstanding performance in public speaking"
@@ -126,7 +127,7 @@ export default function Academics() {
             icon: "🥇",
             items: [
                 "Overall Best Student - Agok Agol Malaak Kwai",
-                "National Mathematics Olympiad Champion",
+                "National Mathematics Olympiad Champion (1st Position)",
                 "Featured in HEM-2024 magazine top 10 female academicians"
             ]
         },
@@ -149,6 +150,14 @@ export default function Academics() {
             ]
         },
         {
+            category: "Sesso",
+            icon: "👑",
+            items: [
+                "Emerged as the best school in Sesso"
+
+            ]
+        },
+        {
             category: "Scholarship Program",
             icon: "🎓",
             items: [
@@ -162,7 +171,7 @@ export default function Academics() {
     const supportServices = [
         {
             title: "Evening Tutorials",
-            description: "Additional learning sessions after regular classes",
+            description: "Additional learning sessions and consultations from the teachers after regular classes",
             image: "/academics/evening-tutorials.jpg",
             icon: "📖"
         },
@@ -226,18 +235,18 @@ export default function Academics() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div className="bg-white/10 rounded-xl p-6 text-center">
                                 <div className="text-4xl mb-3">🥇</div>
-                                <h3 className="font-bold text-lg text-yellow-300 mb-2">National Top 5</h3>
-                                <p className="text-white text-sm">5th Position Nationally in 2024 CSE through Diing Deborah Majok (90%)</p>
+                                <h3 className="font-bold text-lg text-yellow-300 mb-2">National Top 3</h3>
+                                <p className="text-white text-sm">3rd Position Nationally student from Amonto Girls in 2024 CSE-Diing Deborah Majok (90%)</p>
                             </div>
                             <div className="bg-white/10 rounded-xl p-6 text-center">
                                 <div className="text-4xl mb-3">📊</div>
                                 <h3 className="font-bold text-lg text-blue-300 mb-2">Country Ranking</h3>
-                                <p className="text-white text-sm">10th Best School Nationally as of September 2025</p>
+                                <p className="text-white text-sm">10th Best School Nationally 2024 CSE</p>
                             </div>
                             <div className="bg-white/10 rounded-xl p-6 text-center">
                                 <div className="text-4xl mb-3">🏅</div>
                                 <h3 className="font-bold text-lg text-purple-300 mb-2">Best Girls School</h3>
-                                <p className="text-white text-sm">Recognized as the Best Girls Boarding School in Juba</p>
+                                <p className="text-white text-sm">Recognized as the Best Girls Boarding School in South Sudan</p>
                             </div>
                         </div>
                     </motion.div>
@@ -501,7 +510,7 @@ export default function Academics() {
                                 </video>
                             </div>
                             <div className="text-center mt-4">
-                                <p className="text-yellow-300 font-semibold">Adau Quila</p>
+                                <p className="text-yellow-300 font-semibold">Adau Aquila Hakim</p>
                                 <p className="text-white/80">Senior Three Science Student</p>
                                 <p className="text-white/70 italic mt-2">"Academics is what helps us to be prosperous in life, in Amonto, we uphold Academics"</p>
                             </div>

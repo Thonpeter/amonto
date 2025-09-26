@@ -1,10 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBook, FaHome, FaUserFriends, FaTrophy, FaChartLine, FaUniversity, FaHandshake } from 'react-icons/fa';
 
 export default function Scholarships() {
     const [isLoaded, setIsLoaded] = useState(false);
+
+    // Video state and refs
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         setIsLoaded(true);
@@ -23,6 +31,77 @@ export default function Scholarships() {
             },
         }),
     };
+
+    // Video control functions
+    const formatTime = (time) => {
+        if (!time || isNaN(time)) return "0:00";
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
+
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+            } else {
+                videoRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
+        }
+    };
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = !isMuted;
+            setIsMuted(!isMuted);
+        }
+    };
+
+    const handleTimeUpdate = () => {
+        if (videoRef.current) {
+            setCurrentTime(videoRef.current.currentTime);
+            if (videoRef.current.duration && !isNaN(videoRef.current.duration)) {
+                setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100);
+            }
+        }
+    };
+
+    const handleLoadedMetadata = () => {
+        if (videoRef.current) {
+            setDuration(videoRef.current.duration);
+        }
+    };
+
+    const handleVideoEnd = () => {
+        setIsPlaying(false);
+        setCurrentTime(0);
+        setProgress(0);
+    };
+
+    const handleProgressClick = (e) => {
+        if (videoRef.current && videoRef.current.duration) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            videoRef.current.currentTime = percent * videoRef.current.duration;
+        }
+    };
+
+    // Scroll detection to pause video
+    useEffect(() => {
+        const handleScroll = () => {
+            if (isPlaying && videoRef.current) {
+                videoRef.current.pause();
+                setIsPlaying(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isPlaying]);
 
     const benefits = [
         {
@@ -129,14 +208,6 @@ export default function Scholarships() {
                         <p className="text-xl text-white/90 mb-8">
                             Transform your future with our fully-funded scholarship opportunities
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                                Apply Now
-                            </button>
-                            <button className="px-8 py-4 border-2 border-white/30 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-all duration-300">
-                                Download Application
-                            </button>
-                        </div>
                     </motion.div>
                 </div>
             </div>
@@ -163,11 +234,8 @@ export default function Scholarships() {
                     >
                         <h3 className="text-2xl font-bold text-white mb-6">Who Can Apply?</h3>
                         <p className="text-white/80 text-lg mb-6">
-                            Any South Sudanese girl who has scored aggregate <span className="font-bold text-yellow-300">4, 5, or 6</span> in the recent PLE results for P7 Uganda is eligible
+                            Any South Sudanese girl who has scored aggregate <span className="font-bold text-yellow-300">4 & 5</span> in the recent PLE results for P7 Uganda is eligible
                             for a four-year secondary scholarship at Amonto Girls Academy Secondary School.
-                        </p>
-                        <p className="text-white/80 text-lg font-semibold">
-                            Inform her and spread this message widely!
                         </p>
 
                         <div className="mt-8 bg-gradient-to-r from-blue-800/30 to-purple-800/30 rounded-xl p-6">
@@ -175,7 +243,11 @@ export default function Scholarships() {
                             <ul className="text-white/80 space-y-2">
                                 <li className="flex items-start">
                                     <span className="text-yellow-300 mr-2">•</span>
-                                    Top performers in Joint Mock Examinations
+                                    Top performers in Primary school Joint Mock Examinations
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="text-yellow-300 mr-2">•</span>
+                                    Top Jonglei performers
                                 </li>
                                 <li className="flex items-start">
                                     <span className="text-yellow-300 mr-2">•</span>
@@ -338,6 +410,7 @@ export default function Scholarships() {
                     </motion.div>
                 </div>
             </div>
+
             {/* Aluel's Dream Section */}
             <div className="py-20 bg-gradient-to-b from-gray-800 to-gray-900">
                 <div className="container mx-auto px-6">
@@ -369,29 +442,15 @@ export default function Scholarships() {
                             {/* Video container with proper aspect ratio handling */}
                             <div className="relative aspect-video bg-black">
                                 <video
+                                    ref={videoRef}
                                     src="./vid/aluel.mp4"
-                                    controls
-                                    autoPlay
                                     muted
                                     playsInline
                                     loop
-
-                                    onError={(e) => {
-                                        // Fallback if video fails to load
-                                        e.target.style.display = 'none';
-                                        const fallback = document.getElementById('video-fallback');
-                                        if (fallback) fallback.style.display = 'flex';
-                                    }}
-                                    onPlay={(e) => {
-                                        // Hide play button when video plays
-                                        const playButton = document.getElementById('play-button-overlay');
-                                        if (playButton) playButton.style.display = 'none';
-                                    }}
-                                    onPause={(e) => {
-                                        // Show play button when video pauses
-                                        const playButton = document.getElementById('play-button-overlay');
-                                        if (playButton) playButton.style.display = 'flex';
-                                    }}
+                                    className="w-full h-full object-cover"
+                                    onTimeUpdate={handleTimeUpdate}
+                                    onLoadedMetadata={handleLoadedMetadata}
+                                    onEnded={handleVideoEnd}
                                 >
                                     Your browser does not support the video tag.
                                 </video>
@@ -416,12 +475,77 @@ export default function Scholarships() {
                                     </div>
                                 </div>
 
-                                {/* Play button overlay */}
-                                <div id="play-button-overlay" className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-16 h-16 bg-yellow-500/80 rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                                        <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
+                                {/* Custom Play/Pause button overlay */}
+                                <div
+                                    id="play-button-overlay"
+                                    className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                                    onClick={togglePlay}
+                                >
+                                    <div className={`w-16 h-16 bg-yellow-500/80 rounded-full flex items-center justify-center transition-all duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-80 group-hover:opacity-100'}`}>
+                                        {isPlaying ? (
+                                            <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                                            </svg>
+                                        ) : (
+                                            <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Custom Video Controls */}
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                    <div className="flex items-center space-x-3">
+                                        {/* Play/Pause Button */}
+                                        <button
+                                            onClick={togglePlay}
+                                            className="text-white hover:text-yellow-400 transition-colors"
+                                        >
+                                            {isPlaying ? (
+                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                                                </svg>
+                                            ) : (
+                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z" />
+                                                </svg>
+                                            )}
+                                        </button>
+
+                                        {/* Progress Bar */}
+                                        <div className="flex-1 relative">
+                                            <div
+                                                className="h-1 bg-gray-600 rounded-full cursor-pointer"
+                                                onClick={handleProgressClick}
+                                            >
+                                                <div
+                                                    className="h-full bg-yellow-500 rounded-full"
+                                                    style={{ width: `${progress}%` }}
+                                                ></div>
+                                            </div>
+                                        </div>
+
+                                        {/* Time Display */}
+                                        <div className="text-white text-sm min-w-[100px] text-right">
+                                            {formatTime(currentTime)} / {formatTime(duration)}
+                                        </div>
+
+                                        {/* Mute/Unmute Button */}
+                                        <button
+                                            onClick={toggleMute}
+                                            className="text-white hover:text-yellow-400 transition-colors"
+                                        >
+                                            {isMuted ? (
+                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                                                </svg>
+                                            ) : (
+                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                                                </svg>
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -450,156 +574,6 @@ export default function Scholarships() {
                                     - Eleanor Roosevelt
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
-
-                </div>
-            </div>
-
-            {/* Application Process */}
-            <div className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        📝 Application Process
-                    </motion.h2>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-3xl mx-auto"
-                    >
-                        <h3 className="text-2xl font-bold text-white mb-6 text-center">How to Apply</h3>
-
-                        <div className="space-y-6">
-                            <div className="flex items-start gap-4">
-                                <div className="bg-purple-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span className="text-white font-bold">1</span>
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold">Check Eligibility</h4>
-                                    <p className="text-white/80">Review the eligibility criteria to ensure you qualify for our scholarship programs.</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span className="text-white font-bold">2</span>
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold">Prepare Documents</h4>
-                                    <p className="text-white/80">Gather your academic records, recommendation letters, and other required documents.</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span className="text-white font-bold">3</span>
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold">Submit Application</h4>
-                                    <p className="text-white/80">Complete the application form and submit it before the deadline.</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="bg-yellow-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span className="text-white font-bold">4</span>
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold">Interview Process</h4>
-                                    <p className="text-white/80">Selected candidates will be invited for an interview with our scholarship committee.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 bg-gradient-to-r from-blue-800/30 to-purple-800/30 rounded-xl p-6">
-                            <h4 className="text-white font-semibold mb-2">Important Notes:</h4>
-                            <ul className="text-white/80 space-y-2 text-sm">
-                                <li className="flex items-start">
-                                    <span className="text-yellow-300 mr-2">•</span>
-                                    Scholarships are exclusively for girls, aligning with our vision to promote girl child education
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-yellow-300 mr-2">•</span>
-                                    Selections are based on academic merit in specific examinations
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-yellow-300 mr-2">•</span>
-                                    Scholarships for the 2026 academic year are based on 2025 examination results
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Final CTA */}
-            <div className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900">
-                <div className="container mx-auto px-6 text-center">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-white mb-6"
-                    >
-                        Transform Your Future Today
-                    </motion.h2>
-                    <motion.p
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-                    >
-                        Join the exceptional young women who have transformed their lives through Amonto's scholarship program
-                    </motion.p>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={2}
-                        className="flex flex-col sm:flex-row gap-6 justify-center"
-                    >
-                        <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Apply for Scholarship
-                        </button>
-                        <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                            Contact Admissions
-                        </button>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={3}
-                        className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-                    >
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-yellow-300">100%</div>
-                            <div className="text-white/80">Tuition Covered</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-blue-300">4 Years</div>
-                            <div className="text-white/80">Full Scholarship</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-green-300">28</div>
-                            <div className="text-white/80">Scholarships Available</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-pink-300">2026</div>
-                            <div className="text-white/80">Intake Year</div>
                         </div>
                     </motion.div>
                 </div>
