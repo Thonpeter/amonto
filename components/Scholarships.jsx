@@ -424,158 +424,173 @@ export default function Scholarships() {
                         🌟 Dreams of Amonto
                     </motion.h2>
 
-                    {/* Aluel Moch Nhom Video Testimonial */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-gradient-to-br from-yellow-900/20 to-orange-800/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto mb-16"
-                    >
-                        <div className="text-center mb-8">
-                            <h3 className="text-3xl font-bold text-white mb-2">A Dream to Join Amonto</h3>
-                            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4"></div>
-                            <p className="text-white/80">Primary school girl with big dreams</p>
-                        </div>
+                    {/* Aluel's Dream Section */}
+                    <div className="py-20 bg-gradient-to-b from-gray-800 to-gray-900">
+                        <div className="container mx-auto px-6">
+                            <motion.h2
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0}
+                                className="text-4xl font-bold text-center text-white mb-16"
+                            >
+                                🌟 Dreams of Amonto
+                            </motion.h2>
 
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-6 group">
-                            {/* Video container with proper aspect ratio handling */}
-                            <div className="relative aspect-video bg-black">
-                                <video
-                                    ref={videoRef}
-                                    src="./vid/aluel.mp4"
-                                    muted
-                                    playsInline
-                                    loop
-                                    className="w-full h-full object-cover"
-                                    onTimeUpdate={handleTimeUpdate}
-                                    onLoadedMetadata={handleLoadedMetadata}
-                                    onEnded={handleVideoEnd}
-                                >
-                                    Your browser does not support the video tag.
-                                </video>
-
-                                {/* Fallback content if video fails to load */}
-                                <div id="video-fallback" className="absolute inset-0 hidden flex-col items-center justify-center bg-gradient-to-br from-yellow-900/30 to-orange-900/30 p-4">
-                                    <FaUniversity className="text-5xl text-yellow-400 mb-4" />
-                                    <p className="text-white text-lg font-semibold text-center mb-2">Aluel's Testimonial</p>
-                                    <p className="text-yellow-200 text-sm text-center">"I called this place my home, because Noble has shown me a love for a father"</p>
-                                    <button className="mt-4 px-4 py-2 bg-yellow-500 text-gray-900 rounded-lg font-semibold">
-                                        Watch Video
-                                    </button>
+                            {/* Aluel Moch Nhom Video Testimonial */}
+                            <motion.div
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={1}
+                                className="bg-gradient-to-br from-yellow-900/20 to-orange-800/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto mb-16"
+                            >
+                                <div className="text-center mb-8">
+                                    <h3 className="text-3xl font-bold text-white mb-2">A Dream to Join Amonto</h3>
+                                    <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4"></div>
+                                    <p className="text-white/80">Primary school girl with big dreams</p>
                                 </div>
 
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-300"></div>
-
-                                {/* Dream element overlay */}
-                                <div className="absolute top-4 right-4">
-                                    <div className="bg-yellow-500/90 text-gray-900 font-bold px-3 py-1 rounded-full text-sm flex items-center">
-                                        <FaUniversity className="mr-1" /> Dreaming of Amonto
-                                    </div>
-                                </div>
-
-                                {/* Custom Play/Pause button overlay */}
-                                <div
-                                    id="play-button-overlay"
-                                    className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                                    onClick={togglePlay}
-                                >
-                                    <div className={`w-16 h-16 bg-yellow-500/80 rounded-full flex items-center justify-center transition-all duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-80 group-hover:opacity-100'}`}>
-                                        {isPlaying ? (
-                                            <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
-                                            </svg>
-                                        ) : (
-                                            <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8 5v14l11-7z" />
-                                            </svg>
-                                        )}
-                                    </div>
-                                </div>
-
-                                {/* Custom Video Controls */}
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                                    <div className="flex items-center space-x-3">
-                                        {/* Play/Pause Button */}
-                                        <button
-                                            onClick={togglePlay}
-                                            className="text-white hover:text-yellow-400 transition-colors"
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-6 group">
+                                    {/* Video container with fixed height */}
+                                    <div className="relative bg-black" style={{ height: '400px' }}>
+                                        <video
+                                            ref={videoRef}
+                                            src="./vid/aluel.mp4"
+                                            muted
+                                            playsInline
+                                            loop
+                                            className="w-full h-full object-cover"
+                                            onTimeUpdate={handleTimeUpdate}
+                                            onLoadedMetadata={handleLoadedMetadata}
+                                            onEnded={handleVideoEnd}
                                         >
-                                            {isPlaying ? (
-                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
-                                                </svg>
-                                            ) : (
-                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M8 5v14l11-7z" />
-                                                </svg>
-                                            )}
-                                        </button>
+                                            Your browser does not support the video tag.
+                                        </video>
 
-                                        {/* Progress Bar */}
-                                        <div className="flex-1 relative">
-                                            <div
-                                                className="h-1 bg-gray-600 rounded-full cursor-pointer"
-                                                onClick={handleProgressClick}
-                                            >
-                                                <div
-                                                    className="h-full bg-yellow-500 rounded-full"
-                                                    style={{ width: `${progress}%` }}
-                                                ></div>
+                                        {/* Fallback content if video fails to load */}
+                                        <div id="video-fallback" className="absolute inset-0 hidden flex-col items-center justify-center bg-gradient-to-br from-yellow-900/30 to-orange-900/30 p-4">
+                                            <FaUniversity className="text-5xl text-yellow-400 mb-4" />
+                                            <p className="text-white text-lg font-semibold text-center mb-2">Aluel's Testimonial</p>
+                                            <p className="text-yellow-200 text-sm text-center">"I called this place my home, because Noble has shown me a love for a father"</p>
+                                            <button className="mt-4 px-4 py-2 bg-yellow-500 text-gray-900 rounded-lg font-semibold">
+                                                Watch Video
+                                            </button>
+                                        </div>
+
+                                        {/* Gradient overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-300"></div>
+
+                                        {/* Dream element overlay */}
+                                        <div className="absolute top-4 right-4">
+                                            <div className="bg-yellow-500/90 text-gray-900 font-bold px-3 py-1 rounded-full text-sm flex items-center">
+                                                <FaUniversity className="mr-1" /> Dreaming of Amonto
                                             </div>
                                         </div>
 
-                                        {/* Time Display */}
-                                        <div className="text-white text-sm min-w-[100px] text-right">
-                                            {formatTime(currentTime)} / {formatTime(duration)}
+                                        {/* Custom Play/Pause button overlay */}
+                                        <div
+                                            id="play-button-overlay"
+                                            className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                                            onClick={togglePlay}
+                                        >
+                                            <div className={`w-16 h-16 bg-yellow-500/80 rounded-full flex items-center justify-center transition-all duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-80 group-hover:opacity-100'}`}>
+                                                {isPlaying ? (
+                                                    <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                                                    </svg>
+                                                ) : (
+                                                    <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M8 5v14l11-7z" />
+                                                    </svg>
+                                                )}
+                                            </div>
                                         </div>
 
-                                        {/* Mute/Unmute Button */}
-                                        <button
-                                            onClick={toggleMute}
-                                            className="text-white hover:text-yellow-400 transition-colors"
-                                        >
-                                            {isMuted ? (
-                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                                                </svg>
-                                            ) : (
-                                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                                                </svg>
-                                            )}
-                                        </button>
+                                        {/* Custom Video Controls */}
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                            <div className="flex items-center space-x-3">
+                                                {/* Play/Pause Button */}
+                                                <button
+                                                    onClick={togglePlay}
+                                                    className="text-white hover:text-yellow-400 transition-colors"
+                                                >
+                                                    {isPlaying ? (
+                                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                                                        </svg>
+                                                    ) : (
+                                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M8 5v14l11-7z" />
+                                                        </svg>
+                                                    )}
+                                                </button>
+
+                                                {/* Progress Bar */}
+                                                <div className="flex-1 relative">
+                                                    <div
+                                                        className="h-1 bg-gray-600 rounded-full cursor-pointer"
+                                                        onClick={handleProgressClick}
+                                                    >
+                                                        <div
+                                                            className="h-full bg-yellow-500 rounded-full"
+                                                            style={{ width: `${progress}%` }}
+                                                        ></div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Time Display */}
+                                                <div className="text-white text-sm min-w-[100px] text-right">
+                                                    {formatTime(currentTime)} / {formatTime(duration)}
+                                                </div>
+
+                                                {/* Mute/Unmute Button */}
+                                                <button
+                                                    onClick={toggleMute}
+                                                    className="text-white hover:text-yellow-400 transition-colors"
+                                                >
+                                                    {isMuted ? (
+                                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                                                        </svg>
+                                                    ) : (
+                                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                                                        </svg>
+                                                    )}
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div className="text-center px-4">
-                            <div className="bg-black/30 rounded-xl p-5 border border-yellow-500/20">
-                                <p className="text-white/90 text-lg italic mb-3">
-                                    "I called this place my home, because Noble [The School Director] has shown me a love for a father"
-                                </p>
-                                <p className="text-yellow-300 font-semibold">- Aluel Moch-nhom Awuor, The girl with a dream</p>
-                            </div>
+                                <div className="text-center px-4">
+                                    <div className="bg-black/30 rounded-xl p-5 border border-yellow-500/20">
+                                        <p className="text-white/90 text-lg italic mb-3">
+                                            "I called this place my home, because Noble [The School Director] has shown me a love for a father"
+                                        </p>
+                                        <p className="text-yellow-300 font-semibold">- Aluel Moch-nhom Awuor, The girl with a dream</p>
+                                    </div>
 
-                            <div className="mt-6 bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-xl p-4">
-                                <p className="text-white/80 text-sm">
-                                    Aluel dreams of joining Amonto Girls Academy and is working hard to achieve the academic excellence needed for our scholarship program.
-                                </p>
-                            </div>
+                                    <div className="mt-6 bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-xl p-4">
+                                        <p className="text-white/80 text-sm">
+                                            Aluel dreams of joining Amonto Girls Academy and is working hard to achieve the academic excellence needed for our scholarship program.
+                                        </p>
+                                    </div>
 
-                            {/* Eleanor Roosevelt Quote Section */}
-                            <div className="mt-8 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl p-5 border border-purple-500/20">
-                                <div className="text-white/80 italic text-lg text-center">
-                                    "The future belongs to those who believe in the beauty of their dreams."
+                                    {/* Eleanor Roosevelt Quote Section */}
+                                    <div className="mt-8 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl p-5 border border-purple-500/20">
+                                        <div className="text-white/80 italic text-lg text-center">
+                                            "The future belongs to those who believe in the beauty of their dreams."
+                                        </div>
+                                        <div className="text-purple-300 font-semibold text-center mt-3">
+                                            - Eleanor Roosevelt
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-purple-300 font-semibold text-center mt-3">
-                                    - Eleanor Roosevelt
-                                </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
