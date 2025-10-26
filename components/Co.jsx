@@ -11,14 +11,9 @@ export default function Co() {
     const coCurricularImages = [
         // Sports Images (16)
         {
-            image: "/co-curricular/basketball-game.jpg",
-            caption: "Basketball team celebrating victory",
+            image: "/sport/tactic.jpg",
+            caption: "Netball team discussing tactics",
             description: "Our champions showing teamwork and spirit"
-        },
-        {
-            image: "/co-curricular/swimming-competition.jpg",
-            caption: "Students excelling in swimming competition",
-            description: "Demonstrating speed and technique in the pool"
         },
         {
             image: "/facilities/sport2.jpg",
@@ -26,244 +21,99 @@ export default function Co() {
             description: "Fast-paced gameplay and coordination"
         },
         {
-            image: "/co-curricular/athletics-day.jpg",
-            caption: "Annual sports day celebrations",
-            description: "Students enjoying track and field events"
+            image: "/sport/group2.jpg",
+            caption: "Picture before the match",
+            description: "Team close up picture before a big match"
         },
         {
-            image: "/co-curricular/sports-5.jpg",
-            caption: "Football match intensity",
-            description: "Competitive spirit on the field"
+            image: "/sport/group3.jpg",
+            caption: "One more",
+            description: "One is never enough for the team",
         },
         {
-            image: "/co-curricular/sports-6.jpg",
-            caption: "Volleyball team coordination",
-            description: "Perfect teamwork in action"
+            image: "/facilities/sport.jpg",
+            caption: "Volley team ",
+            description: ""
         },
         {
-            image: "/co-curricular/sports-7.jpg",
-            caption: "Table tennis competition",
-            description: "Focus and precision"
+            image: "/culture/culture1.jpg",
+            caption: "Good vibes only",
+            description: "All hands on deck for the dance floor! A powerful display of energy and synchrony."
         },
         {
-            image: "/co-curricular/sports-8.jpg",
-            caption: "Athletics training session",
-            description: "Building endurance and skill"
+            image: "/culture/yirol.jpg",
+            caption: "Rhythms of Our Roots",
+            description: "More than just a dance-It's a living expression of heritage."
         },
         {
-            image: "/co-curricular/sports-9.jpg",
-            caption: "Basketball practice",
-            description: "Developing techniques"
+            image: "/activity/aisle.jpg",
+            caption: "A ceremomial Welcome",
+            description: "A scene of pure pageantry. As the Director proceeds down the red carpet, a guard of honor from the Scout troops offers a salute."
         },
         {
-            image: "/co-curricular/sports-10.jpg",
-            caption: "Swimming lessons",
-            description: "Learning water safety"
+            image: "/activity/chill2.jpg",
+            caption: "",
+            description: "Capturing every moment in AGASS in one geniune smile"
         },
         {
-            image: "/co-curricular/sports-11.jpg",
-            caption: "Team celebrations",
-            description: "Joy of achievement"
+            image: "/activity/closeup2.jpg",
+            caption: "",
+            description: "Smiles at AGASS are simply contagious"
         },
         {
-            image: "/co-curricular/sports-12.jpg",
-            caption: "Sports award ceremony",
-            description: "Recognizing excellence"
+            image: "/activity/daniella.jpg",
+            caption: "A Foundation of Faith",
+            description: "Student leader Daniella raises the Bible high, symbolsing a commitement to lead with wisdom , integrity, and spiritual conviction."
         },
         {
-            image: "/co-curricular/sports-13.jpg",
-            caption: "Warm-up exercises",
-            description: "Preparing for action"
+            image: "/activity/director.jpg",
+            caption: "",
+            description: "The Director prepares to share his vision. A moment of quiet anticipation before his voice guides and inspires the students and staff."
         },
         {
-            image: "/co-curricular/sports-14.jpg",
-            caption: "Coach guidance",
-            description: "Expert mentorship"
+            image: "/activity/handshake.jpg",
+            caption: "A great Honour",
+            description: "The Director shares a historic handshake with Honourable Kuol Manyang Juuk at Amonto Girls Academy, revered liberation leader, the former Minister of Defense and the former Governor of Jonglei State."
         },
         {
-            image: "/co-curricular/sports-15.jpg",
-            caption: "Team strategy session",
-            description: "Planning for victory"
-        },
-        {
-            image: "/co-curricular/sports-16.jpg",
-            caption: "Sports equipment management",
-            description: "Organization and care"
+            image: "/activity/journalism1.jpg",
+            caption: "The Next Generation of Leadership",
+            description: "This is what modern leadrship looks like in AGASS: Informed, articulated, and confident. AGASS equips students with leadership, prepared to speak up and make a difference."
         },
 
-        // Cultural Images (16)
+        // Newly Added Images
         {
-            image: "/co-curricular/traditional-dance.jpg",
-            caption: "Traditional dance performance",
-            description: "Celebrating South Sudanese heritage"
+            image: "/activity/leader.jpg",
+            caption: "A Guiding Light",
+            description: "The head girl stands poised, holding the Bible in one hand and the microphone in the other, ready to lead with faith and conviction."
         },
         {
-            image: "/co-curricular/modern-dance.jpg",
-            caption: "Modern dance group performance",
-            description: "Contemporary moves and creativity"
+            image: "/activity/scouts.jpg",
+            caption: "Scouts in Ceremony",
+            description: "A disciplined team of scouts marches in perfect formation, gracing the ceremony with their presence and adding dignity to the occasion."
         },
         {
-            image: "/co-curricular/debate-team.jpg",
-            caption: "Debate team in session",
-            description: "Developing critical thinking skills"
+            image: "/activity/sisters.jpg",
+            caption: "The Director's Daughters",
+            description: "Amonto and Sandra, the two daughters of the school Director, share a joyful moment as they pose together for a photograph."
         },
         {
-            image: "/co-curricular/music-performance.jpg",
-            caption: "School band performing",
-            description: "Musical talent on display"
+            image: "/activity/smile1.jpg",
+            caption: "Radiant Joy",
+            description: "One of our students flashes a beautiful, genuine smile that captures the happy spirit of life at Amonto Girls Academy."
         },
         {
-            image: "/co-curricular/cultural-5.jpg",
-            caption: "Drama club performance",
-            description: "Expressive acting skills"
+            image: "/activity/students.jpg",
+            caption: "Confident Leadership",
+            description: "Students step forward with confidence, some proudly holding the school flag while student leader Daniella addresses the gathering with the microphone."
         },
         {
-            image: "/co-curricular/cultural-6.jpg",
-            caption: "Art exhibition setup",
-            description: "Showcasing creativity"
-        },
-        {
-            image: "/co-curricular/cultural-7.jpg",
-            caption: "Cultural festival",
-            description: "Traditional attire showcase"
-        },
-        {
-            image: "/co-curricular/cultural-8.jpg",
-            caption: "Music rehearsal",
-            description: "Perfecting harmonies"
-        },
-        {
-            image: "/co-curricular/cultural-9.jpg",
-            caption: "Poetry recitation",
-            description: "Literary expression"
-        },
-        {
-            image: "/co-curricular/cultural-10.jpg",
-            caption: "Dance practice",
-            description: "Choreography sessions"
-        },
-        {
-            image: "/co-curricular/cultural-11.jpg",
-            caption: "Cultural food fair",
-            description: "Culinary traditions"
-        },
-        {
-            image: "/co-curricular/cultural-12.jpg",
-            caption: "Traditional storytelling",
-            description: "Preserving heritage"
-        },
-        {
-            image: "/co-curricular/cultural-13.jpg",
-            caption: "Art workshop",
-            description: "Creative learning"
-        },
-        {
-            image: "/co-curricular/cultural-14.jpg",
-            caption: "Music composition",
-            description: "Original creations"
-        },
-        {
-            image: "/co-curricular/cultural-15.jpg",
-            caption: "Drama rehearsal",
-            description: "Character development"
-        },
-        {
-            image: "/co-curricular/cultural-16.jpg",
-            caption: "Cultural parade",
-            description: "Community celebration"
-        },
-
-        // Activities Images (18)
-        {
-            image: "/co-curricular/students-laughing.jpg",
-            caption: "Students enjoying break time",
-            description: "Friendship and fun moments"
-        },
-        {
-            image: "/co-curricular/art-class.jpg",
-            caption: "Art club creativity",
-            description: "Expressing through colors and forms"
-        },
-        {
-            image: "/co-curricular/science-fair.jpg",
-            caption: "Science fair excitement",
-            description: "Innovation and discovery"
-        },
-        {
-            image: "/co-curricular/community-service.jpg",
-            caption: "Community service project",
-            description: "Giving back with smiles"
-        },
-        {
-            image: "/co-curricular/activities-5.jpg",
-            caption: "Leadership camp",
-            description: "Developing future leaders"
-        },
-        {
-            image: "/co-curricular/activities-6.jpg",
-            caption: "Science experiment",
-            description: "Hands-on learning"
-        },
-        {
-            image: "/co-curricular/activities-7.jpg",
-            caption: "Gardening club",
-            description: "Green thumb activities"
-        },
-        {
-            image: "/co-curricular/activities-8.jpg",
-            caption: "Library reading session",
-            description: "Literary exploration"
-        },
-        {
-            image: "/co-curricular/activities-9.jpg",
-            caption: "Math olympiad",
-            description: "Problem solving challenges"
-        },
-        {
-            image: "/co-curricular/activities-10.jpg",
-            caption: "Robotics workshop",
-            description: "Technology innovation"
-        },
-        {
-            image: "/co-curricular/activities-11.jpg",
-            caption: "Environmental club",
-            description: "Eco-friendly initiatives"
-        },
-        {
-            image: "/co-curricular/activities-12.jpg",
-            caption: "Cooking class",
-            description: "Culinary skills development"
-        },
-        {
-            image: "/co-curricular/activities-13.jpg",
-            caption: "Photography club",
-            description: "Capturing moments"
-        },
-        {
-            image: "/co-curricular/activities-14.jpg",
-            caption: "Chess tournament",
-            description: "Strategic thinking"
-        },
-        {
-            image: "/co-curricular/activities-15.jpg",
-            caption: "Field trip adventure",
-            description: "Educational excursions"
-        },
-        {
-            image: "/co-curricular/activities-16.jpg",
-            caption: "Peer tutoring",
-            description: "Collaborative learning"
-        },
-        {
-            image: "/co-curricular/activities-17.jpg",
-            caption: "Creative writing",
-            description: "Literary expression"
-        },
-        {
-            image: "/co-curricular/activities-18.jpg",
-            caption: "School newspaper",
-            description: "Journalistic endeavors"
+            image: "/activity/students2.jpg",
+            caption: "Prepared for Action",
+            description: "Student leaders stand in formation, holding their notebooks as they await their introduction, ready to take on their responsibilities."
         }
+
+
     ];
 
     const loadMoreImages = () => {

@@ -153,16 +153,16 @@ export default function About() {
             description: "As the Director of Studies, Mr. Baiga draws upon his specialised Bachelor's degree in Vocational studies in Agriculture with Educaton from Kyabobog University [Uganda] to champion students  success, proactively identifying areas for academic enhancement and implementing targeted strategies while providing dedicated mentorship and support to faculty members."
         },
         {
-            name: "Mr.Ainemugisha Gerald",
+            name: "Mr. Ainemugisha Gerald",
             role: "Deputy Head Teacher for Academics",
             image: "/facilities/aine2.jpg",
-            description: ""
+            description: "Mr. Ainemugisha brings a strong academic foundation to his role, holding a Bachelor of Science in Education [Bishop Stuart University]. His educational background provides him with the perfect blend of scientific rigor and pedagogical expertise to drive academic excellence across all departments. As Deputy Head Teacher for Academics, he oversees curriculum development, instructional quality, and student academic performance, ensuring every student receives the highest standard of education."
         },
         {
             name: "Mr. Peter Aduot Del",
             role: "Examination Bureau",
-            image: "/facilities/",
-            description: ""
+            image: "/facilities/aduot.jpg",
+            description: "With many years of dedicated service in the field of education, Mr. Aduot brings a wealth of experience and institutional knowledge to his position as Head of the Examination Bureau. His extensive teaching background gives him unique insight into student assessment and academic standards. He ensures the integrity and smooth administration of all examinations while maintaining the highest standards of academic evaluation that the academy is known for."
         },
         {
             name: "Mr.Chol Tuor Abuol",

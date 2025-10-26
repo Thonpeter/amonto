@@ -421,7 +421,6 @@ export default function Scholarships() {
                         custom={0}
                         className="text-4xl font-bold text-center text-white mb-16"
                     >
-                        🌟 Dreams of Amonto
                     </motion.h2>
 
                     {/* Aluel's Dream Section */}
@@ -446,7 +445,7 @@ export default function Scholarships() {
                                 className="bg-gradient-to-br from-yellow-900/20 to-orange-800/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto mb-16"
                             >
                                 <div className="text-center mb-8">
-                                    <h3 className="text-3xl font-bold text-white mb-2">A Dream to Join Amonto</h3>
+                                    <h3 className="text-3xl font-bold text-white mb-2">Aluel's Dream to Join Amonto</h3>
                                     <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4"></div>
                                     <p className="text-white/80">Primary school girl with big dreams</p>
                                 </div>

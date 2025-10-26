@@ -83,7 +83,7 @@ export default function Contact() {
                             </div>
                             <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-lg rounded-2xl p-6 border border-blue-500/30">
                                 <div className="text-4xl font-bold text-blue-300"><FaEnvelope className="inline mr-2" /></div>
-                                <div className="text-white/80 text-sm mt-2">amontogirlsacademy2024@gmail.com</div>
+                                <div className="text-white/80 text-sm mt-2">info@amontogirls.com</div>
                             </div>
                             <div className="bg-gradient-to-br from-green-600/20 to-teal-600/20 backdrop-blur-lg rounded-2xl p-6 border border-green-500/30">
                                 <div className="text-4xl font-bold text-green-300"><FaMapMarkerAlt className="inline mr-2" /></div>
