@@ -131,7 +131,7 @@ export default function Home() {
           content="Amonto Girls Academy, girls boarding school South Sudan, quality education Juba, South Sudan schools, girls education, leadership development"
         />
         <meta name="author" content="Amonto Girls Academy" />
-        <meta property="og:title" content="Amonto Girls Academy - Empowering Young Women Through Education" />
+        <meta property="og:title" content="Amonto Girls Academy - Empowering girl-child Through Education" />
         <meta
           property="og:description"
           content="South Sudan's premier girls boarding school offering modern curriculum, excellent facilities, and holistic education in Juba."
