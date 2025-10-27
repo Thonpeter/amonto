@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEOHead from '../../components/SEOHead';
 
 export default function Academics() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -196,7 +197,14 @@ export default function Academics() {
     ];
 
     return (
-        <div className="pt-24 min-h-screen">
+        <>
+            <SEOHead
+                title="Academic Excellence at Amonto Girls Academy - Top-Ranked School"
+                description="Discover our nationally recognized academic programs, student achievements, and comprehensive curriculum at Amonto Girls Academy in South Sudan."
+                keywords="academics Amonto Girls, curriculum South Sudan, student achievements, academic programs, CSE preparation"
+                canonicalUrl="https://www.amontogirls.com/academics"
+                ogImage="/academics/classroom-hero.jpg"
+            />
             <section id="academics" className="min-h-screen py-16">
                 {/* Hero Section */}
                 <div className="relative w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/academics/classroom-hero.jpg')" }}>
@@ -603,6 +611,6 @@ export default function Academics() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

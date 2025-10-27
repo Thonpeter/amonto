@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import SEOHead from './SEOHead';
 import { motion } from 'framer-motion';
 import { FaChalkboardTeacher, FaBook, FaGraduationCap, FaSchool, FaGlobe, FaLightbulb, FaTrophy, FaAward, FaHeart, FaUsers } from 'react-icons/fa';
 
@@ -188,706 +189,715 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="min-h-screen">
-            {/* Hero Section */}
-            <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/gallery/campus-overview.jpg')" }}>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
-                <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
-                    <div className="text-center mb-16">
-                        <motion.h1
+        <>
+            <SEOHead
+                title="About Amonto Girls Academy - Our Mission & Leadership Team"
+                description="Learn about Amonto Girls Academy's mission, vision, leadership team, and our commitment to empowering young women in South Sudan through quality education."
+                keywords="about Amonto Girls Academy, school mission, leadership team, South Sudan education, girls empowerment"
+                canonicalUrl="https://www.amontogirls.com/about"
+                ogImage="/facilities/director.jpg"
+            />
+            <section id="about" className="min-h-screen">
+                {/* Hero Section */}
+                <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/gallery/campus-overview.jpg')" }}>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+                    <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
+                        <div className="text-center mb-16">
+                            <motion.h1
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0}
+                                className="text-6xl sm:text-8xl font-extrabold text-white mb-8"
+                            >
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-orange-300">
+                                    Empowering Tomorrow's Leaders
+                                </span>
+                            </motion.h1>
+                            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
+                            <motion.p
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={1}
+                                className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed"
+                            >
+                                Amonto Girls Academy - Transforming Lives Through Excellence in South Sudan
+                            </motion.p>
+
+                            {/* Quick Stats */}
+                            <motion.div
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={2}
+                                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto"
+                            >
+                                {stats.map((stat, index) => (
+                                    <div key={index} className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
+                                        <div className="text-4xl font-bold text-yellow-300 mb-2">{stat.value}</div>
+                                        <div className="text-white/80 text-sm">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Who We Are & Mission */}
+                <div className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 relative overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute top-10 right-10 opacity-10">
+                        <img src="./asset/cranes.jpg" alt="Cranes background" className="w-32 h-32 object-contain" />
+                    </div>
+
+                    <div className="container mx-auto px-6">
+                        {/* Header with Logo and Flag */}
+                        <motion.div
                             initial="hidden"
                             animate={isLoaded ? "visible" : "hidden"}
                             variants={fadeIn}
                             custom={0}
-                            className="text-6xl sm:text-8xl font-extrabold text-white mb-8"
+                            className="text-center mb-16"
                         >
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-orange-300">
-                                Empowering Tomorrow's Leaders
-                            </span>
-                        </motion.h1>
-                        <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
-                        <motion.p
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={1}
-                            className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed"
-                        >
-                            Amonto Girls Academy - Transforming Lives Through Excellence in South Sudan
-                        </motion.p>
-
-                        {/* Quick Stats */}
-                        <motion.div
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={2}
-                            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto"
-                        >
-                            {stats.map((stat, index) => (
-                                <div key={index} className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
-                                    <div className="text-4xl font-bold text-yellow-300 mb-2">{stat.value}</div>
-                                    <div className="text-white/80 text-sm">{stat.label}</div>
-                                </div>
-                            ))}
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Who We Are & Mission */}
-            <div className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 relative overflow-hidden">
-                {/* Background decorative elements */}
-                <div className="absolute top-10 right-10 opacity-10">
-                    <img src="./asset/cranes.jpg" alt="Cranes background" className="w-32 h-32 object-contain" />
-                </div>
-
-                <div className="container mx-auto px-6">
-                    {/* Header with Logo and Flag */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-center mb-16"
-                    >
-                        <div className="flex items-center justify-center space-x-8 mb-8">
-                            <div className="relative group">
-                                <img
-                                    src="./asset/flag.jpg"
-                                    alt="School Flag"
-                                    className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div className="relative group">
-                                <img
-                                    src="./asset/logo.jpg"
-                                    alt="School Logo"
-                                    className="w-32 h-32 object-contain rounded-full bg-white p-2 shadow-lg transform group-hover:scale-110 transition-transform duration-300"
-                                />
-                            </div>
-                            <div className="relative group">
-                                <img
-                                    src="./asset/cranes.jpg"
-                                    alt="School Cranes"
-                                    className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                        </div>
-
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {/* Who We Are */}
-                        <motion.div
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={1}
-                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
-                        >
-                            <div className="absolute -top-4 -left-4 bg-purple-500 rounded-full p-2 shadow-lg">
-                                <img
-                                    src="./asset/logo.jpg"
-                                    alt="School Logo"
-                                    className="w-12 h-12 object-contain rounded-full"
-                                />
-                            </div>
-                            <h2 className="text-3xl font-bold text-white mb-6 pt-4">Who We Are</h2>
-                            <p className="text-white/80 text-lg leading-relaxed mb-6">
-                                Amonto Girls Academy is a prestigious single-girls boarding school located on Jebel Amianin, South Sudan.
-                                We offer a modern South Sudan curriculum dedicated to empowering young women through quality education,
-                                leadership development, and personal growth.
-                            </p>
-                            <div className="relative h-64 rounded-xl overflow-hidden mt-6 group">
-                                <img
-                                    src="/gallery/504024717_122292467870008987_5574490080200567755_n.jpg"
-                                    alt="School leadership team"
-                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                <div className="absolute bottom-4 left-4 flex items-center space-x-2">
-                                    <img
-                                        src="./asset/cranes.jpg"
-                                        alt="Cranes"
-                                        className="w-8 h-8 object-cover rounded-full border-2 border-white"
-                                    />
-                                    <span className="text-white font-semibold">Our Heritage</span>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Our Mission */}
-                        <motion.div
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={2}
-                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
-                        >
-                            <div className="absolute -top-4 -right-4 bg-indigo-500 rounded-full p-2 shadow-lg">
-                                <img
-                                    src="./asset/cranes.jpg"
-                                    alt="School Cranes"
-                                    className="w-12 h-12 object-cover rounded-full"
-                                />
-                            </div>
-                            <h2 className="text-3xl font-bold text-white mb-6 pt-4">Our Mission</h2>
-                            <p className="text-white/80 text-lg leading-relaxed">
-                                Our mission is to provide high-quality education that nurtures academic excellence, discipline, leadership and lifetime skills.
-                            </p>
-
-                            <div className="my-8 p-4 bg-white/5 rounded-lg border border-white/10">
-                                <div className="flex items-center space-x-4 mb-3">
+                            <div className="flex items-center justify-center space-x-8 mb-8">
+                                <div className="relative group">
                                     <img
                                         src="./asset/flag.jpg"
                                         alt="School Flag"
-                                        className="w-10 h-8 object-cover rounded"
+                                        className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
                                     />
-                                    <h3 className="text-xl font-bold text-white">Our Vision</h3>
                                 </div>
-                                <p className="text-white/80">
-                                    To be the preferred academic centre that nurtures and prepares citizens in leadership and lifetime skills in the country and beyond
-                                </p>
-                            </div>
-
-                            {/* Values Section */}
-                            <div className="mt-8">
-                                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                                <div className="relative group">
                                     <img
                                         src="./asset/logo.jpg"
-                                        alt="Logo"
-                                        className="w-6 h-6 object-contain mr-2"
+                                        alt="School Logo"
+                                        className="w-32 h-32 object-contain rounded-full bg-white p-2 shadow-lg transform group-hover:scale-110 transition-transform duration-300"
                                     />
-                                    Our Values
-                                </h3>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Excellence</span>
-                                    <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Leadership</span>
-                                    <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Discipline</span>
-                                    <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Empowerment</span>
+                                </div>
+                                <div className="relative group">
+                                    <img
+                                        src="./asset/cranes.jpg"
+                                        alt="School Cranes"
+                                        className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                                    />
                                 </div>
                             </div>
+
                         </motion.div>
-                    </div>
 
-                    {/* Bottom decorative cranes */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={3}
-                        className="text-center mt-12"
-                    >
-                        <img
-                            src="./asset/cranes.jpg"
-                            alt="Cranes Symbol"
-                            className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-white/20 shadow-lg"
-                        />
-                        <p className="text-white/60 mt-2 text-sm">Cranes - Symbolizing Our Soaring Ambitions</p>
-                    </motion.div>
-                </div>
-            </div>
-            {/* Student Testimonials Video */}
-            <div className="py-20 bg-gradient-to-b from-purple-900 to-indigo-900">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="max-w-4xl mx-auto text-center mb-12"
-                    >
-                        <h2 className="text-4xl font-bold text-white mb-6">🎬 Hear From Our Students</h2>
-                        <p className="text-xl text-white/80">
-                            Listen to our students share their experiences at Amonto Girls Academy
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 max-w-4xl mx-auto"
-                    >
-                        <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
-                            <video
-                                controls
-                                className="w-full h-full object-cover"
-                                poster="/facilities/modern.jpg" // Optional: add a poster frame
-                                preload="metadata"
-                            >
-                                <source src="./vid/senior1.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <p className="text-white/80 text-center mt-4 italic">
-                            Our students share their journey and experiences at Amonto Girls Academy
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Founder & Leadership Team Section */}
-            <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        👥 THE SCHOOL ADMINISTRATION
-                    </motion.h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        {leadershipTeam.map((member, index) => (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                            {/* Who We Are */}
                             <motion.div
-                                key={index}
                                 initial="hidden"
                                 animate={isLoaded ? "visible" : "hidden"}
                                 variants={fadeIn}
-                                custom={index + 1}
-                                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center"
+                                custom={1}
+                                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
                             >
-                                <div className="relative h-56 w-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-500/30">
+                                <div className="absolute -top-4 -left-4 bg-purple-500 rounded-full p-2 shadow-lg">
                                     <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover"
+                                        src="./asset/logo.jpg"
+                                        alt="School Logo"
+                                        className="w-12 h-12 object-contain rounded-full"
                                     />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
-                                <p className="text-yellow-400 mb-4">{member.role}</p>
-                                <p className="text-white/80 text-sm">{member.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Director's Video Section */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={4}
-                        className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
-                    >
-                        <h3 className="text-2xl font-bold text-white text-center mb-6">Message from Our Director</h3>
-                        <div className="aspect-video rounded-xl overflow-hidden">
-                            <video
-                                controls
-
-                            >
-                                <source src="./vid/noble.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <p className="text-white/80 text-center mt-4">
-                            Hear directly from Noble Arem Riak about his vision for Amonto Girls Academy
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={5}
-                        className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
-                    >
-                        <h3 className="text-2xl font-bold text-white text-center mb-6">Our Beginning</h3>
-                        <p className="text-white/80 text-center">
-                            Amonto Girls Academy completed construction in 2024 and welcomed its first batch of 36 students,
-                            marking the beginning of our journey to transform girls' education in South Sudan. Under the guidance
-                            of our dedicated leadership team, we are committed to providing exceptional education and opportunities
-                            for young women to excel.
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Our Impact Section */}
-            <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        💫 Our Impact
-                    </motion.h2>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto"
-                    >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Transforming Lives</h3>
-                                <p className="text-white/80 mb-6">
-                                    In a country where fewer than 500 girls completed high school just ten years ago,
-                                    Amonto is transforming lives and breaking barriers. We're proud to be part of the
-                                    educational revolution in South Sudan.
+                                <h2 className="text-3xl font-bold text-white mb-6 pt-4">Who We Are</h2>
+                                <p className="text-white/80 text-lg leading-relaxed mb-6">
+                                    Amonto Girls Academy is a prestigious single-girls boarding school located on Jebel Amianin, South Sudan.
+                                    We offer a modern South Sudan curriculum dedicated to empowering young women through quality education,
+                                    leadership development, and personal growth.
                                 </p>
-                                <div className="bg-gradient-to-r from-blue-800/30 to-purple-800/30 rounded-xl p-4">
-                                    <h4 className="text-white font-semibold mb-2">Breaking Educational Barriers</h4>
-                                    <div className="grid grid-cols-2 gap-4 text-center">
-                                        <div>
-                                            <div className="text-2xl font-bold text-blue-300 mb-1">Under 10%</div>
-                                            <p className="text-white/80 text-sm">National secondary enrollment</p>
-                                        </div>
-                                        <div>
-                                            <div className="text-2xl font-bold text-purple-300 mb-1">98%</div>
-                                            <p className="text-white/80 text-sm">Our university acceptance rate</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="relative h-64 rounded-xl overflow-hidden">
+                                <div className="relative h-64 rounded-xl overflow-hidden mt-6 group">
                                     <img
-                                        src="/gallery/image (1).jpg"
-                                        alt="Graduation ceremony at Amonto"
-                                        className="w-full h-full object-cover"
+                                        src="/gallery/504024717_122292467870008987_5574490080200567755_n.jpg"
+                                        alt="School leadership team"
+                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    <div className="absolute bottom-4 left-4 flex items-center space-x-2">
+                                        <img
+                                            src="./asset/cranes.jpg"
+                                            alt="Cranes"
+                                            className="w-8 h-8 object-cover rounded-full border-2 border-white"
+                                        />
+                                        <span className="text-white font-semibold">Our Heritage</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </motion.div>
+
+                            {/* Our Mission */}
+                            <motion.div
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={2}
+                                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
+                            >
+                                <div className="absolute -top-4 -right-4 bg-indigo-500 rounded-full p-2 shadow-lg">
+                                    <img
+                                        src="./asset/cranes.jpg"
+                                        alt="School Cranes"
+                                        className="w-12 h-12 object-cover rounded-full"
+                                    />
+                                </div>
+                                <h2 className="text-3xl font-bold text-white mb-6 pt-4">Our Mission</h2>
+                                <p className="text-white/80 text-lg leading-relaxed">
+                                    Our mission is to provide high-quality education that nurtures academic excellence, discipline, leadership and lifetime skills.
+                                </p>
+
+                                <div className="my-8 p-4 bg-white/5 rounded-lg border border-white/10">
+                                    <div className="flex items-center space-x-4 mb-3">
+                                        <img
+                                            src="./asset/flag.jpg"
+                                            alt="School Flag"
+                                            className="w-10 h-8 object-cover rounded"
+                                        />
+                                        <h3 className="text-xl font-bold text-white">Our Vision</h3>
+                                    </div>
+                                    <p className="text-white/80">
+                                        To be the preferred academic centre that nurtures and prepares citizens in leadership and lifetime skills in the country and beyond
+                                    </p>
+                                </div>
+
+                                {/* Values Section */}
+                                <div className="mt-8">
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                                        <img
+                                            src="./asset/logo.jpg"
+                                            alt="Logo"
+                                            className="w-6 h-6 object-contain mr-2"
+                                        />
+                                        Our Values
+                                    </h3>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Excellence</span>
+                                        <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Leadership</span>
+                                        <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Discipline</span>
+                                        <span className="text-white/70 bg-white/5 px-3 py-2 rounded-lg text-sm">Empowerment</span>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
-                    </motion.div>
+
+                        {/* Bottom decorative cranes */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={3}
+                            className="text-center mt-12"
+                        >
+                            <img
+                                src="./asset/cranes.jpg"
+                                alt="Cranes Symbol"
+                                className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-white/20 shadow-lg"
+                            />
+                            <p className="text-white/60 mt-2 text-sm">Cranes - Symbolizing Our Soaring Ambitions</p>
+                        </motion.div>
+                    </div>
                 </div>
-            </div>
+                {/* Student Testimonials Video */}
+                <div className="py-20 bg-gradient-to-b from-purple-900 to-indigo-900">
+                    <div className="container mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="max-w-4xl mx-auto text-center mb-12"
+                        >
+                            <h2 className="text-4xl font-bold text-white mb-6">🎬 Hear From Our Students</h2>
+                            <p className="text-xl text-white/80">
+                                Listen to our students share their experiences at Amonto Girls Academy
+                            </p>
+                        </motion.div>
 
-            {/* Why Choose Us Section */}
-            <div className="relative py-24 overflow-hidden">
-                {/* Background with safe.jpg and overlay */}
-                <div
-                    className="absolute inset-0 z-0 bg-blue-900/90"
-                    style={{
-                        backgroundImage: "url('./facilities/safe.jpg')",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        backgroundAttachment: "fixed"
-                    }}
-                ></div>
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 max-w-4xl mx-auto"
+                        >
+                            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                <video
+                                    controls
+                                    className="w-full h-full object-cover"
+                                    poster="/facilities/modern.jpg" // Optional: add a poster frame
+                                    preload="metadata"
+                                >
+                                    <source src="./vid/senior1.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <p className="text-white/80 text-center mt-4 italic">
+                                Our students share their journey and experiences at Amonto Girls Academy
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
 
-                <div className="container relative z-10 mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-5xl font-bold text-center text-white mb-6"
-                    >
-                        Why Choose Amonto Girls Academy?
-                    </motion.h2>
+                {/* Founder & Leadership Team Section */}
+                <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
+                    <div className="container mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-center text-white mb-16"
+                        >
+                            👥 THE SCHOOL ADMINISTRATION
+                        </motion.h2>
 
-                    <motion.p
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0.5}
-                        className="text-xl text-center text-white/90 mb-16 max-w-3xl mx-auto"
-                    >
-                        Discover the exceptional qualities that make our academy the premier choice for girls' education
-                    </motion.p>
-
-                    {/* Features Grid with Images */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {features.map((feature, index) => {
-                            // Assign appropriate images based on feature content
-                            let imagePath = "";
-                            switch (index) {
-                                case 0: // Safe Environment
-                                    imagePath = "./facilities/safe2.jpg";
-                                    break;
-                                case 1: // Modern Facilities
-                                    imagePath = "./facilities/modern.jpg";
-                                    break;
-                                case 2: // Diverse Programs
-                                    imagePath = "./facilities/program1.jpg";
-                                    break;
-                                case 3: // Extracurricular
-                                    imagePath = "./facilities/dance.jpg";
-                                    break;
-                                case 4: // Orientation
-                                    imagePath = "./facilities/orient.jpg";
-                                    break;
-                                case 5: // Additional Programs
-                                    imagePath = "./facilities/program3.jpg";
-                                    break;
-                                default:
-                                    imagePath = "./facilities/modern.jpg";
-                            }
-
-                            return (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                            {leadershipTeam.map((member, index) => (
                                 <motion.div
                                     key={index}
                                     initial="hidden"
                                     animate={isLoaded ? "visible" : "hidden"}
                                     variants={fadeIn}
                                     custom={index + 1}
-                                    className="group bg-transparent rounded-2xl overflow-hidden border border-white/20 hover:border-yellow-500/30 transition-all duration-500 hover:shadow-2xl"
+                                    className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center"
                                 >
-                                    {/* Image Container */}
-                                    <div className="h-48 overflow-hidden relative">
-                                        <div
-                                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                            style={{ backgroundImage: `url(${imagePath})` }}
-                                        >
-                                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-                                        </div>
+                                    <div className="relative h-56 w-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-500/30">
+                                        <img
+                                            src={member.image}
+                                            alt={member.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
+                                    <p className="text-yellow-400 mb-4">{member.role}</p>
+                                    <p className="text-white/80 text-sm">{member.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
 
-                                        {/* Icon overlay */}
-                                        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white text-lg shadow-lg">
-                                            {feature.icon}
+                        {/* Director's Video Section */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={4}
+                            className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
+                        >
+                            <h3 className="text-2xl font-bold text-white text-center mb-6">Message from Our Director</h3>
+                            <div className="aspect-video rounded-xl overflow-hidden">
+                                <video
+                                    controls
+
+                                >
+                                    <source src="./vid/noble.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <p className="text-white/80 text-center mt-4">
+                                Hear directly from Noble Arem Riak about his vision for Amonto Girls Academy
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={5}
+                            className="mt-12 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/30 max-w-4xl mx-auto"
+                        >
+                            <h3 className="text-2xl font-bold text-white text-center mb-6">Our Beginning</h3>
+                            <p className="text-white/80 text-center">
+                                Amonto Girls Academy completed construction in 2024 and welcomed its first batch of 36 students,
+                                marking the beginning of our journey to transform girls' education in South Sudan. Under the guidance
+                                of our dedicated leadership team, we are committed to providing exceptional education and opportunities
+                                for young women to excel.
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Our Impact Section */}
+                <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
+                    <div className="container mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-center text-white mb-16"
+                        >
+                            💫 Our Impact
+                        </motion.h2>
+
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto"
+                        >
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-4">Transforming Lives</h3>
+                                    <p className="text-white/80 mb-6">
+                                        In a country where fewer than 500 girls completed high school just ten years ago,
+                                        Amonto is transforming lives and breaking barriers. We're proud to be part of the
+                                        educational revolution in South Sudan.
+                                    </p>
+                                    <div className="bg-gradient-to-r from-blue-800/30 to-purple-800/30 rounded-xl p-4">
+                                        <h4 className="text-white font-semibold mb-2">Breaking Educational Barriers</h4>
+                                        <div className="grid grid-cols-2 gap-4 text-center">
+                                            <div>
+                                                <div className="text-2xl font-bold text-blue-300 mb-1">Under 10%</div>
+                                                <p className="text-white/80 text-sm">National secondary enrollment</p>
+                                            </div>
+                                            <div>
+                                                <div className="text-2xl font-bold text-purple-300 mb-1">98%</div>
+                                                <p className="text-white/80 text-sm">Our university acceptance rate</p>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    {/* Content with friendly dark blue background */}
-                                    <div className="p-6 bg-blue-800/95 border-t border-blue-700">
-                                        <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                                        <p className="text-blue-100 mb-4 leading-relaxed">{feature.description}</p>
+                                <div>
+                                    <div className="relative h-64 rounded-xl overflow-hidden">
+                                        <img
+                                            src="/gallery/image (1).jpg"
+                                            alt="Graduation ceremony at Amonto"
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Why Choose Us Section */}
+                <div className="relative py-24 overflow-hidden">
+                    {/* Background with safe.jpg and overlay */}
+                    <div
+                        className="absolute inset-0 z-0 bg-blue-900/90"
+                        style={{
+                            backgroundImage: "url('./facilities/safe.jpg')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            backgroundAttachment: "fixed"
+                        }}
+                    ></div>
+
+                    <div className="container relative z-10 mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-5xl font-bold text-center text-white mb-6"
+                        >
+                            Why Choose Amonto Girls Academy?
+                        </motion.h2>
+
+                        <motion.p
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0.5}
+                            className="text-xl text-center text-white/90 mb-16 max-w-3xl mx-auto"
+                        >
+                            Discover the exceptional qualities that make our academy the premier choice for girls' education
+                        </motion.p>
+
+                        {/* Features Grid with Images */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            {features.map((feature, index) => {
+                                // Assign appropriate images based on feature content
+                                let imagePath = "";
+                                switch (index) {
+                                    case 0: // Safe Environment
+                                        imagePath = "./facilities/safe2.jpg";
+                                        break;
+                                    case 1: // Modern Facilities
+                                        imagePath = "./facilities/modern.jpg";
+                                        break;
+                                    case 2: // Diverse Programs
+                                        imagePath = "./facilities/program1.jpg";
+                                        break;
+                                    case 3: // Extracurricular
+                                        imagePath = "./facilities/dance.jpg";
+                                        break;
+                                    case 4: // Orientation
+                                        imagePath = "./facilities/orient.jpg";
+                                        break;
+                                    case 5: // Additional Programs
+                                        imagePath = "./facilities/program3.jpg";
+                                        break;
+                                    default:
+                                        imagePath = "./facilities/modern.jpg";
+                                }
+
+                                return (
+                                    <motion.div
+                                        key={index}
+                                        initial="hidden"
+                                        animate={isLoaded ? "visible" : "hidden"}
+                                        variants={fadeIn}
+                                        custom={index + 1}
+                                        className="group bg-transparent rounded-2xl overflow-hidden border border-white/20 hover:border-yellow-500/30 transition-all duration-500 hover:shadow-2xl"
+                                    >
+                                        {/* Image Container */}
+                                        <div className="h-48 overflow-hidden relative">
+                                            <div
+                                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                                style={{ backgroundImage: `url(${imagePath})` }}
+                                            >
+                                                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+                                            </div>
+
+                                            {/* Icon overlay */}
+                                            <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white text-lg shadow-lg">
+                                                {feature.icon}
+                                            </div>
+                                        </div>
+
+                                        {/* Content with friendly dark blue background */}
+                                        <div className="p-6 bg-blue-800/95 border-t border-blue-700">
+                                            <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                                            <p className="text-blue-100 mb-4 leading-relaxed">{feature.description}</p>
 
 
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Stats section */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={features.length + 1}
+                            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center"
+                        >
+                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                                <div className="text-4xl font-bold text-yellow-400 mb-2">98%</div>
+                                <div className="text-blue-100">Academic Success</div>
+                            </div>
+                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                                <div className="text-4xl font-bold text-yellow-400 mb-2">100%</div>
+                                <div className="text-blue-100">Safe Environment</div>
+                            </div>
+                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                                <div className="text-4xl font-bold text-yellow-400 mb-2">25+</div>
+                                <div className="text-blue-100">Programs</div>
+                            </div>
+                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
+                                <div className="text-4xl font-bold text-yellow-400 mb-2">15:1</div>
+                                <div className="text-blue-100">Student-Teacher Ratio</div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Our Values Section */}
+                <div className="py-20 bg-gradient-to-b from-gray-800 to-gray-900">
+                    <div className="container mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-center text-white mb-16"
+                        >
+                            📜 Our Values
+                        </motion.h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+                            {values.map((value, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial="hidden"
+                                    animate={isLoaded ? "visible" : "hidden"}
+                                    variants={fadeIn}
+                                    custom={index + 1}
+                                    className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center"
+                                >
+                                    <div className="text-3xl mb-4">{value.icon}</div>
+                                    <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
+                                    <p className="text-white/80 text-sm">{value.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* School History & Milestones */}
+                <div className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
+                    <div className="container mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-center text-white mb-16"
+                        >
+                            🏛️ Our History & Milestones
+                        </motion.h2>
+
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto"
+                        >
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-4">Our Journey</h3>
+                                    <p className="text-white/80 mb-6">
+                                        Established with a vision to transform girl-child's education in South Sudan,
+                                        Amonto Girls Academy has grown from humble beginnings to become a nationally
+                                        recognized institution of excellence.
+                                    </p>
+                                    <div className="space-y-4">
+                                        <div className="flex items-start">
+                                            <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                                                <span className="text-white text-sm">1</span>
+                                            </div>
+                                            <p className="text-white/80">Founded with a mission to empower young girls through education</p>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                                                <span className="text-white text-sm">2</span>
+                                            </div>
+                                            <p className="text-white/80">Grew to become the #1 girls' school in Juba</p>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                                                <span className="text-white text-sm">3</span>
+                                            </div>
+                                            <p className="text-white/80">Achieved national ranking of 10th among all secondary schools</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div className="relative h-64 rounded-xl overflow-hidden">
+                                        <img
+                                            src="/facilities/students.jpg"
+                                            alt="School historical development"
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Gallery Section */}
+                <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
+                    <div className="container mx-auto px-6">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-center text-white mb-16"
+                        >
+                            📸 Campus Life
+                        </motion.h2>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                            {galleryImages.map((image, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial="hidden"
+                                    animate={isLoaded ? "visible" : "hidden"}
+                                    variants={fadeIn}
+                                    custom={index + 1}
+                                    className="relative overflow-hidden rounded-2xl shadow-xl group"
+                                >
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                        <h3 className="text-white text-lg font-semibold">{image.caption}</h3>
                                     </div>
                                 </motion.div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Stats section */}
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={features.length + 1}
-                        className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center"
-                    >
-                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                            <div className="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-                            <div className="text-blue-100">Academic Success</div>
+                            ))}
                         </div>
-                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                            <div className="text-4xl font-bold text-yellow-400 mb-2">100%</div>
-                            <div className="text-blue-100">Safe Environment</div>
-                        </div>
-                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                            <div className="text-4xl font-bold text-yellow-400 mb-2">25+</div>
-                            <div className="text-blue-100">Programs</div>
-                        </div>
-                        <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                            <div className="text-4xl font-bold text-yellow-400 mb-2">15:1</div>
-                            <div className="text-blue-100">Student-Teacher Ratio</div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Our Values Section */}
-            <div className="py-20 bg-gradient-to-b from-gray-800 to-gray-900">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        📜 Our Values
-                    </motion.h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
-                        {values.map((value, index) => (
-                            <motion.div
-                                key={index}
-                                initial="hidden"
-                                animate={isLoaded ? "visible" : "hidden"}
-                                variants={fadeIn}
-                                custom={index + 1}
-                                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center"
-                            >
-                                <div className="text-3xl mb-4">{value.icon}</div>
-                                <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
-                                <p className="text-white/80 text-sm">{value.description}</p>
-                            </motion.div>
-                        ))}
                     </div>
                 </div>
-            </div>
 
-            {/* School History & Milestones */}
-            <div className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        🏛️ Our History & Milestones
-                    </motion.h2>
+                {/* Final CTA */}
+                <div className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900">
+                    <div className="container mx-auto px-6 text-center">
+                        <motion.h2
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={0}
+                            className="text-4xl font-bold text-white mb-6"
+                        >
+                            Join Our Community of Excellence
+                        </motion.h2>
 
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto"
-                    >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Our Journey</h3>
-                                <p className="text-white/80 mb-6">
-                                    Established with a vision to transform girl-child's education in South Sudan,
-                                    Amonto Girls Academy has grown from humble beginnings to become a nationally
-                                    recognized institution of excellence.
-                                </p>
-                                <div className="space-y-4">
-                                    <div className="flex items-start">
-                                        <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                                            <span className="text-white text-sm">1</span>
-                                        </div>
-                                        <p className="text-white/80">Founded with a mission to empower young girls through education</p>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                                            <span className="text-white text-sm">2</span>
-                                        </div>
-                                        <p className="text-white/80">Grew to become the #1 girls' school in Juba</p>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="bg-purple-600 rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                                            <span className="text-white text-sm">3</span>
-                                        </div>
-                                        <p className="text-white/80">Achieved national ranking of 10th among all secondary schools</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <motion.p
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={1}
+                            className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
+                        >
+                            Discover the opportunities waiting for you at Amonto Girls Academy.
+                            Our admissions team is ready to guide you through the enrollment process.
+                        </motion.p>
 
-                            <div>
-                                <div className="relative h-64 rounded-xl overflow-hidden">
-                                    <img
-                                        src="/facilities/students.jpg"
-                                        alt="School historical development"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Gallery Section */}
-            <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
-                <div className="container mx-auto px-6">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-center text-white mb-16"
-                    >
-                        📸 Campus Life
-                    </motion.h2>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        {galleryImages.map((image, index) => (
-                            <motion.div
-                                key={index}
-                                initial="hidden"
-                                animate={isLoaded ? "visible" : "hidden"}
-                                variants={fadeIn}
-                                custom={index + 1}
-                                className="relative overflow-hidden rounded-2xl shadow-xl group"
-                            >
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                    <h3 className="text-white text-lg font-semibold">{image.caption}</h3>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Final CTA */}
-            <div className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900">
-                <div className="container mx-auto px-6 text-center">
-                    <motion.h2
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={0}
-                        className="text-4xl font-bold text-white mb-6"
-                    >
-                        Join Our Community of Excellence
-                    </motion.h2>
-
-                    <motion.p
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={1}
-                        className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-                    >
-                        Discover the opportunities waiting for you at Amonto Girls Academy.
-                        Our admissions team is ready to guide you through the enrollment process.
-                    </motion.p>
-
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={2}
-                        className="flex flex-col sm:flex-row gap-6 justify-center"
-                    >
-                        {/*
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={2}
+                            className="flex flex-col sm:flex-row gap-6 justify-center"
+                        >
+                            {/*
                         <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Get Admission
                         </button>
                         <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                             Schedule Visit
                         </button>*/}
-                    </motion.div>
+                        </motion.div>
 
-                    <motion.div
-                        initial="hidden"
-                        animate={isLoaded ? "visible" : "hidden"}
-                        variants={fadeIn}
-                        custom={3}
-                        className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-                    >
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-yellow-300">10th</div>
-                            <div className="text-white/80">Nationally Ranked</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-blue-300">#1</div>
-                            <div className="text-white/80">Best Girls School</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-green-300">98%</div>
-                            <div className="text-white/80">University Acceptance</div>
-                        </div>
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={3}
+                            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+                        >
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-yellow-300">10th</div>
+                                <div className="text-white/80">Nationally Ranked</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-blue-300">#1</div>
+                                <div className="text-white/80">Best Girls School</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-green-300">98%</div>
+                                <div className="text-white/80">University Acceptance</div>
+                            </div>
 
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }

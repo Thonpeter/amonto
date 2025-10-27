@@ -198,7 +198,7 @@ const Navbar = () => {
           <div className="relative flex-shrink-0">
             <Image
               src="/logo2.png"
-              alt="Amonto Girls Academy Logo"
+              alt="Amonto Girls Academy Secondary School"
               width={scrolled ? 50 : 60}
               height={scrolled ? 50 : 60}
               className="transition-all duration-300"

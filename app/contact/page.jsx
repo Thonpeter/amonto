@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
@@ -40,7 +41,14 @@ export default function Contact() {
     };
 
     return (
-        <div className="pt-24 min-h-screen">
+        <>
+            <SEOHead
+                title="Contact Amonto Girls Academy - Visit Our Campus in Juba"
+                description="Get in touch with Amonto Girls Academy. Schedule campus tours, inquire about admissions, and visit our Jebel Amianin campus in Juba, South Sudan."
+                keywords="contact Amonto Girls, campus visit, school location Juba, phone number, email address"
+                canonicalUrl="https://www.amontogirls.com/contact"
+                ogImage="/facilities/boarding.jpg"
+            />
             <section id="contact" className="min-h-screen">
                 {/* Hero Section */}
                 <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/facilities/boarding.jpg')" }}>
@@ -188,6 +196,6 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

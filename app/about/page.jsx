@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import SEOHead from '../../components/SEOHead';
 import { FaChalkboardTeacher, FaBook, FaGraduationCap, FaSchool, FaGlobe, FaLightbulb, FaTrophy, FaAward, FaHeart, FaUsers } from 'react-icons/fa';
 
 export default function About() {
@@ -188,7 +189,14 @@ export default function About() {
     ];
 
     return (
-        <div className="pt-24 min-h-screen">
+        <>
+            <SEOHead
+                title="About Amonto Girls Academy - Our Mission & Leadership Team"
+                description="Learn about Amonto Girls Academy's mission, vision, leadership team, and our commitment to empowering young women in South Sudan through quality education."
+                keywords="about Amonto Girls Academy, school mission, leadership team, South Sudan education, girls empowerment"
+                canonicalUrl="https://www.amontogirls.com/about"
+                ogImage="/facilities/director.jpg"
+            />
             <section id="about" className="min-h-screen">
                 {/* Hero Section */}
                 <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/gallery/campus-overview.jpg')" }}>
@@ -890,6 +898,6 @@ export default function About() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }
