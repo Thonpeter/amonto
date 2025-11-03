@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amonto Girls Academy - Empowering Young Women Through Education",
+  title: "Amonto Girls Academy - Empowering girl-child Through Education",
   description: "Amonto Girls Academy is a leading boarding school in South Sudan, offering quality education, leadership development, and personal growth for young women.",
 };
 

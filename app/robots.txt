@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /*.json$
 
 Sitemap: https://www.amontogirls.com/sitemap.xml
