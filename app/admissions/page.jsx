@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { getRandomGalleryImage } from '../../utils/galleryImages';
+import Image from 'next/image';
 
 export default function Admissions() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -252,10 +253,13 @@ export default function Admissions() {
                                     >
                                         <div className="relative h-48">
                                             {facility.image ? (
-                                                <img
+                                                <Image
                                                     src={facility.image}
                                                     alt={facility.title}
-                                                    className="w-full h-full object-cover"
+                                                    fill
+                                                    quality={90}
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                    className="object-cover"
                                                 />
                                             ) : (
                                                 <div className="w-full h-full bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-blue-900/80 flex items-center justify-center">
@@ -342,10 +346,13 @@ export default function Admissions() {
                                 className="relative mb-16 max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl"
                             >
                                 <div className="relative h-[500px]">
-                                    <img
+                                    <Image
                                         src="/gallery/image (1).jpg"
                                         alt="Boarding Life at Amonto Girls Academy"
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        quality={90}
+                                        sizes="(max-width: 768px) 100vw, 100vw"
+                                        className="object-cover"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/50 to-transparent"></div>
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
@@ -386,10 +393,13 @@ export default function Admissions() {
                                     >
                                         {/* Background Image */}
                                         <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
-                                            <img
+                                            <Image
                                                 src={item.image}
                                                 alt={item.title}
-                                                className="w-full h-full object-cover"
+                                                fill
+                                                quality={90}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                                className="object-cover"
                                             />
                                         </div>
                                         
@@ -432,10 +442,13 @@ export default function Admissions() {
                                             custom={8 + index}
                                             className="relative group overflow-hidden rounded-xl aspect-square"
                                         >
-                                            <img
+                                            <Image
                                                 src={img}
                                                 alt={`Boarding life ${index + 1}`}
-                                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                                fill
+                                                quality={90}
+                                                sizes="(max-width: 768px) 50vw, 25vw"
+                                                className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </motion.div>
@@ -509,10 +522,13 @@ export default function Admissions() {
                                         </div>
 
                                         <div className="relative h-64 md:h-auto">
-                                            <img
+                                            <Image
                                                 src={admissionSteps[activeStep].image}
                                                 alt={admissionSteps[activeStep].title}
-                                                className="w-full h-full object-cover"
+                                                fill
+                                                quality={90}
+                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                                className="object-cover"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent md:hidden"></div>
                                         </div>
@@ -546,10 +562,13 @@ export default function Admissions() {
                                         className="bg-gradient-to-br from-blue-800/30 to-purple-800/30 rounded-2xl overflow-hidden shadow-xl"
                                     >
                                         <div className="relative h-48">
-                                            <img
+                                            <Image
                                                 src={program.image}
                                                 alt={program.title}
-                                                className="w-full h-full object-cover"
+                                                fill
+                                                quality={90}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
                                                 <h3 className="text-white text-xl font-semibold flex items-center">
@@ -635,9 +654,11 @@ export default function Admissions() {
                                 <div className="aspect-video rounded-xl overflow-hidden">
                                     <video
                                         controls
-
+                                        preload="metadata"
+                                        className="w-full h-full"
+                                        poster="/gallery/image (5).jpg"
                                     >
-                                        <source src="./vid/cel.mp4" type="video/mp4" />
+                                        <source src="/vid/cel.mp4" type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>

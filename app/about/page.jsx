@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaChalkboardTeacher, FaBook, FaGraduationCap, FaSchool, FaGlobe, FaLightbulb, FaTrophy, FaAward, FaHeart, FaUsers } from 'react-icons/fa';
 import { getRandomGalleryImage } from '../../utils/galleryImages';
+import Image from 'next/image';
 
 export default function About() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -244,7 +245,14 @@ export default function About() {
                 <div className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 relative overflow-hidden">
                     {/* Background decorative elements */}
                     <div className="absolute top-10 right-10 opacity-10">
-                        <img src="./asset/cranes.jpg" alt="Cranes background" className="w-32 h-32 object-contain" />
+                        <Image 
+                            src="/asset/cranes.jpg" 
+                            alt="Cranes background" 
+                            width={128} 
+                            height={128}
+                            quality={90}
+                            className="w-32 h-32 object-contain" 
+                        />
                     </div>
 
                     <div className="container mx-auto px-6">
@@ -258,23 +266,32 @@ export default function About() {
                         >
                             <div className="flex items-center justify-center space-x-8 mb-8">
                                 <div className="relative group">
-                                    <img
-                                        src="./asset/flag.jpg"
+                                    <Image
+                                        src="/asset/flag.jpg"
                                         alt="School Flag"
+                                        width={96}
+                                        height={64}
+                                        quality={90}
                                         className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
                                     />
                                 </div>
                                 <div className="relative group">
-                                    <img
-                                        src="./asset/logo.jpg"
+                                    <Image
+                                        src="/asset/logo.jpg"
                                         alt="School Logo"
+                                        width={128}
+                                        height={128}
+                                        quality={90}
                                         className="w-32 h-32 object-contain rounded-full bg-white p-2 shadow-lg transform group-hover:scale-110 transition-transform duration-300"
                                     />
                                 </div>
                                 <div className="relative group">
-                                    <img
-                                        src="./asset/cranes.jpg"
+                                    <Image
+                                        src="/asset/cranes.jpg"
                                         alt="School Cranes"
+                                        width={96}
+                                        height={64}
+                                        quality={90}
                                         className="w-24 h-16 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
                                     />
                                 </div>
@@ -292,9 +309,12 @@ export default function About() {
                                 className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
                             >
                                 <div className="absolute -top-4 -left-4 bg-purple-500 rounded-full p-2 shadow-lg">
-                                    <img
-                                        src="./asset/logo.jpg"
+                                    <Image
+                                        src="/asset/logo.jpg"
                                         alt="School Logo"
+                                        width={128}
+                                        height={128}
+                                        quality={90}
                                         className="w-12 h-12 object-contain rounded-full"
                                     />
                                 </div>
@@ -305,16 +325,23 @@ export default function About() {
                                     leadership development, and personal growth.
                                 </p>
                                 <div className="relative h-64 rounded-xl overflow-hidden mt-6 group">
-                                    <img
+                                    <Image
                                         src="/gallery/504024717_122292467870008987_5574490080200567755_n.jpg"
                                         alt="School leadership team"
+                                        width={400}
+                                        height={300}
+                                        quality={90}
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                     <div className="absolute bottom-4 left-4 flex items-center space-x-2">
-                                        <img
-                                            src="./asset/cranes.jpg"
+                                        <Image
+                                            src="/asset/cranes.jpg"
                                             alt="Cranes"
+                                            width={200}
+                                            height={200}
+                                            quality={90}
                                             className="w-8 h-8 object-cover rounded-full border-2 border-white"
                                         />
                                         <span className="text-white font-semibold">Our Heritage</span>
@@ -331,9 +358,12 @@ export default function About() {
                                 className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 relative"
                             >
                                 <div className="absolute -top-4 -right-4 bg-indigo-500 rounded-full p-2 shadow-lg">
-                                    <img
-                                        src="./asset/cranes.jpg"
+                                    <Image
+                                        src="/asset/cranes.jpg"
                                         alt="School Cranes"
+                                        width={300}
+                                        height={200}
+                                        quality={90}
                                         className="w-12 h-12 object-cover rounded-full"
                                     />
                                 </div>
@@ -344,9 +374,12 @@ export default function About() {
 
                                 <div className="my-8 p-4 bg-white/5 rounded-lg border border-white/10">
                                     <div className="flex items-center space-x-4 mb-3">
-                                        <img
-                                            src="./asset/flag.jpg"
+                                        <Image
+                                            src="/asset/flag.jpg"
                                             alt="School Flag"
+                                            width={200}
+                                            height={150}
+                                            quality={90}
                                             className="w-10 h-8 object-cover rounded"
                                         />
                                         <h3 className="text-xl font-bold text-white">Our Vision</h3>
@@ -359,9 +392,12 @@ export default function About() {
                                 {/* Values Section */}
                                 <div className="mt-8">
                                     <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                                        <img
-                                            src="./asset/logo.jpg"
+                                        <Image
+                                            src="/asset/logo.jpg"
                                             alt="Logo"
+                                            width={200}
+                                            height={200}
+                                            quality={90}
                                             className="w-6 h-6 object-contain mr-2"
                                         />
                                         Our Values
@@ -384,9 +420,12 @@ export default function About() {
                             custom={3}
                             className="text-center mt-12"
                         >
-                            <img
-                                src="./asset/cranes.jpg"
+                            <Image
+                                src="/asset/cranes.jpg"
                                 alt="Cranes Symbol"
+                                width={200}
+                                height={200}
+                                quality={90}
                                 className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-white/20 shadow-lg"
                             />
                             <p className="text-white/60 mt-2 text-sm">Cranes - Symbolizing Our Soaring Ambitions</p>
@@ -423,7 +462,7 @@ export default function About() {
                                     poster="/facilities/modern.jpg" // Optional: add a poster frame
                                     preload="metadata"
                                 >
-                                    <source src="./vid/senior1.mp4" type="video/mp4" />
+                                    <source src="/vid/senior1.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -458,9 +497,13 @@ export default function About() {
                                     className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center"
                                 >
                                     <div className="relative h-56 w-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-500/30">
-                                        <img
+                                        <Image
                                             src={member.image}
                                             alt={member.name}
+                                            width={300}
+                                            height={400}
+                                            quality={90}
+                                            sizes="(max-width: 768px) 100vw, 33vw"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -483,9 +526,11 @@ export default function About() {
                             <div className="aspect-video rounded-xl overflow-hidden">
                                 <video
                                     controls
-
+                                    preload="metadata"
+                                    className="w-full h-full"
+                                    poster="/gallery/image (2).jpg"
                                 >
-                                    <source src="./vid/noble.mp4" type="video/mp4" />
+                                    <source src="/vid/noble.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -557,9 +602,13 @@ export default function About() {
 
                                 <div>
                                     <div className="relative h-64 rounded-xl overflow-hidden">
-                                        <img
+                                        <Image
                                             src="/gallery/image (1).jpg"
                                             alt="Graduation ceremony at Amonto"
+                                            width={600}
+                                            height={400}
+                                            quality={90}
+                                            sizes="(max-width: 768px) 100vw, 50vw"
                                             className="w-full h-full object-cover"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -647,10 +696,13 @@ export default function About() {
                                         >
                                             {/* Background Image with Parallax Effect */}
                                             <div className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
-                                                <img
+                                                <Image
                                                     src={galleryImages[index]}
                                                     alt={feature.title}
-                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                    fill
+                                                    quality={90}
+                                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                                    className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                                                 />
                                                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-purple-900/70 to-blue-900/80"></div>
                                             </div>
@@ -889,9 +941,13 @@ export default function About() {
 
                                 <div>
                                     <div className="relative h-64 rounded-xl overflow-hidden">
-                                        <img
+                                        <Image
                                             src="/facilities/students.jpg"
                                             alt="School historical development"
+                                            width={600}
+                                            height={400}
+                                            quality={90}
+                                            sizes="(max-width: 768px) 100vw, 50vw"
                                             className="w-full h-full object-cover"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -925,9 +981,13 @@ export default function About() {
                                     custom={index + 1}
                                     className="relative overflow-hidden rounded-2xl shadow-xl group"
                                 >
-                                    <img
+                                    <Image
                                         src={image.src}
                                         alt={image.alt}
+                                        width={400}
+                                        height={300}
+                                        quality={90}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">

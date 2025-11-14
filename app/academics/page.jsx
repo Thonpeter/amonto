@@ -270,10 +270,11 @@ export default function Academics() {
                                     muted
                                     loop
                                     playsInline
+                                    preload="metadata"
                                     className="w-full h-full object-cover"
-                                    poster="/gallery/trophy-celebration.jpg" // Use a relevant poster image
+                                    poster="/gallery/image (3).jpg"
                                 >
-                                    <source src="./vid/win.mp4" type="video/mp4" />
+                                    <source src="/vid/win.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
@@ -508,9 +509,11 @@ export default function Academics() {
                                 <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
                                     <video
                                         controls
-
+                                        preload="metadata"
+                                        className="w-full h-full"
+                                        poster="/gallery/image (4).jpg"
                                     >
-                                        <source src="./vid/adau.mp4" type="video/mp4" />
+                                        <source src="/vid/adau.mp4" type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>

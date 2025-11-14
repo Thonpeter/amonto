@@ -169,18 +169,19 @@ export default function Home() {
         >
           {/* Video Background */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <video
+              <video
               ref={videoRef}
               autoPlay
               muted
               loop
               playsInline
+              preload="metadata"
               className={`w-full h-full object-cover ${isVideoPlaying ? 'block' : 'hidden'}`}
               poster={`/gallery/image (${currentImageIndex + 1}).jpg`}
               onLoadedData={() => setIsVideoLoaded(true)}
               onPlay={() => setIsVideoPlaying(true)}
             >
-              <source src="./vid/amonto.mp4" type="video/mp4" />
+              <source src="/vid/amonto.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
