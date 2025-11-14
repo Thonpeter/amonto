@@ -3,14 +3,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import SEOHead from '../../components/SEOHead';
+import { getRandomGalleryImage } from '../../utils/galleryImages';
 
 export default function Academics() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [heroBackground, setHeroBackground] = useState(null);
 
     useEffect(() => {
         setIsLoaded(true);
+        // Set random background image on mount
+        setHeroBackground(getRandomGalleryImage());
 
         const interval = setInterval(() => {
             setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -198,16 +201,9 @@ export default function Academics() {
 
     return (
         <>
-            <SEOHead
-                title="Academic Excellence at Amonto Girls Academy - Top-Ranked School"
-                description="Discover our nationally recognized academic programs, student achievements, and comprehensive curriculum at Amonto Girls Academy in South Sudan."
-                keywords="academics Amonto Girls, curriculum South Sudan, student achievements, academic programs, CSE preparation"
-                canonicalUrl="https://www.amontogirls.com/academics"
-                ogImage="/academics/classroom-hero.jpg"
-            />
             <section id="academics" className="min-h-screen py-16">
                 {/* Hero Section */}
-                <div className="relative w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/academics/classroom-hero.jpg')" }}>
+                <div className="relative w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: heroBackground ? `url('${heroBackground}')` : "url('/gallery/image (1).jpg')" }}>
                     <div className="absolute inset-0 bg-black/50"></div>
                     <div className="relative z-10 px-4 sm:px-6">
                         <div className="text-center mb-16 pt-24">

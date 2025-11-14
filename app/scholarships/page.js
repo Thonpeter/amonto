@@ -2,12 +2,16 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { getRandomGalleryImage } from '../../utils/galleryImages';
 
 export default function Scholarships() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [heroBackground, setHeroBackground] = useState(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    // Set random background image on mount
+    setHeroBackground(getRandomGalleryImage());
   }, []);
 
   // Animation variants
@@ -55,7 +59,7 @@ export default function Scholarships() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/gallery/image (8).jpg')",
+              backgroundImage: heroBackground ? `url('${heroBackground}')` : "url('/gallery/image (1).jpg')",
               filter: "brightness(0.4) contrast(1.2)",
             }}
             aria-hidden="true"

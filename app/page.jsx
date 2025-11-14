@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import About from "../components/About";
@@ -120,35 +119,44 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Amonto Girls Academy - Premier Girls Boarding School in South Sudan</title>
-        <meta
-          name="description"
-          content="Amonto Girls Academy is South Sudan's leading girls boarding school offering quality education, leadership development, and academic excellence in Juba."
-        />
-        <meta
-          name="keywords"
-          content="Amonto Girls Academy, girls boarding school South Sudan, quality education Juba, South Sudan schools, girls education, leadership development"
-        />
-        <meta name="author" content="Amonto Girls Academy" />
-        <meta property="og:title" content="Amonto Girls Academy - Empowering girl-child Through Education" />
-        <meta
-          property="og:description"
-          content="South Sudan's premier girls boarding school offering modern curriculum, excellent facilities, and holistic education in Juba."
-        />
-        <meta property="og:image" content="/gallery/image (1).jpg" />
-        <meta property="og:url" content="https://www.amontogirls.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Amonto Girls Academy" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Amonto Girls Academy - Premier Girls Education in South Sudan" />
-        <meta
-          name="twitter:description"
-          content="Transformative education for girls in South Sudan. Academic excellence, leadership development, and modern facilities."
-        />
-        <meta name="twitter:image" content="/gallery/image (1).jpg" />
-        <link rel="canonical" href="https://www.amontogirls.com" />
-      </Head>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Amonto Girls Academy",
+            "alternateName": "AGASS",
+            "url": "https://www.amontogirls.com",
+            "logo": "https://www.amontogirls.com/logo.png",
+            "description": "South Sudan's premier girls boarding school offering quality education, leadership development, and academic excellence in Juba.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Jebel Amianin",
+              "addressLocality": "Juba",
+              "addressCountry": "South Sudan"
+            },
+            "telephone": "+211 (0) 923 666 022",
+            "email": "info@amontogirls.com",
+            "foundingDate": "2024",
+            "award": [
+              "10th Position Nationally - 2024 CSE Results",
+              "#1 Best Girls School in Juba",
+              "National Mathematics Olympiad Champion 2024"
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "50"
+            },
+            "sameAs": [
+              "https://www.facebook.com/amontogirlsacademy",
+              "https://www.instagram.com/amontogirlsacademy"
+            ]
+          })
+        }}
+      />
 
       {/* Add spacing for the fixed navbar */}
       <div className="pt-20"></div>

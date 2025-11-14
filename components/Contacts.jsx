@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import SEOHead from './SEOHead';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { getRandomGalleryImage } from '../utils/galleryImages';
 
 export default function Contact() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [heroBackground, setHeroBackground] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,6 +16,8 @@ export default function Contact() {
 
     useEffect(() => {
         setIsLoaded(true);
+        // Set random background image on mount
+        setHeroBackground(getRandomGalleryImage());
     }, []);
 
     const handleFormChange = (e) => {
@@ -51,7 +55,7 @@ export default function Contact() {
             />
             <section id="contact" className="min-h-screen">
                 {/* Hero Section */}
-                <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/facilities/boarding.jpg')" }}>
+                <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: heroBackground ? `url('${heroBackground}')` : "url('/gallery/image (1).jpg')" }}>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 
                     <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">

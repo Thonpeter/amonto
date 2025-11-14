@@ -2,9 +2,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBook, FaHome, FaUserFriends, FaTrophy, FaChartLine, FaUniversity, FaHandshake } from 'react-icons/fa';
+import { getRandomGalleryImage } from '../utils/galleryImages';
 
 export default function Scholarships() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [heroBackground, setHeroBackground] = useState(null);
 
     // Video state and refs
     const videoRef = useRef(null);
@@ -16,6 +18,8 @@ export default function Scholarships() {
 
     useEffect(() => {
         setIsLoaded(true);
+        // Set random background image on mount
+        setHeroBackground(getRandomGalleryImage());
     }, []);
 
     // Animation variants
@@ -153,7 +157,7 @@ export default function Scholarships() {
     return (
         <section id="scholarships" className="min-h-screen">
             {/* Hero Section */}
-            <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/gallery/image (8).jpg')" }}>
+            <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: heroBackground ? `url('${heroBackground}')` : "url('/gallery/image (1).jpg')" }}>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 
                 <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">

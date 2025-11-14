@@ -5,12 +5,16 @@ import { useEffect, useState } from 'react';
 import SEOHead from './SEOHead';
 import { motion } from 'framer-motion';
 import { FaChalkboardTeacher, FaBook, FaGraduationCap, FaSchool, FaGlobe, FaLightbulb, FaTrophy, FaAward, FaHeart, FaUsers } from 'react-icons/fa';
+import { getRandomGalleryImage } from '../utils/galleryImages';
 
 export default function About() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [heroBackground, setHeroBackground] = useState(null);
 
     useEffect(() => {
         setIsLoaded(true);
+        // Set random background image on mount
+        setHeroBackground(getRandomGalleryImage());
     }, []);
 
     // Animation variants
@@ -138,7 +142,7 @@ export default function About() {
         {
             name: "Madam Lydia Adongo",
             role: "Head Teacher",
-            image: "/facilities/headteacher.jpg",
+            image: "/facilities/hm.jpg",
             description: "Madam Lydia Adongo brings extensive experience in education leadership to her role as Head Teacher. With a background in curriculum development and student mentorship, she leads the academic vision of Amonto Girls Academy. Her commitment to excellence and student success creates a nurturing environment where young girls can thrive academically and personally."
         },
         {
@@ -199,7 +203,7 @@ export default function About() {
             />
             <section id="about" className="min-h-screen">
                 {/* Hero Section */}
-                <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/gallery/campus-overview.jpg')" }}>
+                <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: heroBackground ? `url('${heroBackground}')` : "url('/gallery/image (1).jpg')" }}>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
                     <div className="relative z-10 container mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
                         <div className="text-center mb-16">
@@ -574,127 +578,236 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Why Choose Us Section */}
-                <div className="relative py-24 overflow-hidden">
-                    {/* Background with safe.jpg and overlay */}
-                    <div
-                        className="absolute inset-0 z-0 bg-blue-900/90"
-                        style={{
-                            backgroundImage: "url('./facilities/safe.jpg')",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundAttachment: "fixed"
-                        }}
-                    ></div>
+                {/* Why Choose Us Section - Completely Redesigned */}
+                <div className="relative py-32 overflow-hidden bg-gradient-to-br from-indigo-950 via-purple-900 to-blue-950">
+                    {/* Animated Background Elements */}
+                    <div className="absolute inset-0 overflow-hidden">
+                        <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/5 rounded-full blur-3xl"></div>
+                    </div>
 
                     <div className="container relative z-10 mx-auto px-6">
-                        <motion.h2
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={0}
-                            className="text-5xl font-bold text-center text-white mb-6"
-                        >
-                            Why Choose Amonto Girls Academy?
-                        </motion.h2>
-
-                        <motion.p
-                            initial="hidden"
-                            animate={isLoaded ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            custom={0.5}
-                            className="text-xl text-center text-white/90 mb-16 max-w-3xl mx-auto"
-                        >
-                            Discover the exceptional qualities that make our academy the premier choice for girls' education
-                        </motion.p>
-
-                        {/* Features Grid with Images */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                            {features.map((feature, index) => {
-                                // Assign appropriate images based on feature content
-                                let imagePath = "";
-                                switch (index) {
-                                    case 0: // Safe Environment
-                                        imagePath = "./facilities/safe2.jpg";
-                                        break;
-                                    case 1: // Modern Facilities
-                                        imagePath = "./facilities/modern.jpg";
-                                        break;
-                                    case 2: // Diverse Programs
-                                        imagePath = "./facilities/program1.jpg";
-                                        break;
-                                    case 3: // Extracurricular
-                                        imagePath = "./facilities/dance.jpg";
-                                        break;
-                                    case 4: // Orientation
-                                        imagePath = "./facilities/orient.jpg";
-                                        break;
-                                    case 5: // Additional Programs
-                                        imagePath = "./facilities/program3.jpg";
-                                        break;
-                                    default:
-                                        imagePath = "./facilities/modern.jpg";
-                                }
-
-                                return (
-                                    <motion.div
-                                        key={index}
-                                        initial="hidden"
-                                        animate={isLoaded ? "visible" : "hidden"}
-                                        variants={fadeIn}
-                                        custom={index + 1}
-                                        className="group bg-transparent rounded-2xl overflow-hidden border border-white/20 hover:border-yellow-500/30 transition-all duration-500 hover:shadow-2xl"
-                                    >
-                                        {/* Image Container */}
-                                        <div className="h-48 overflow-hidden relative">
-                                            <div
-                                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                                style={{ backgroundImage: `url(${imagePath})` }}
-                                            >
-                                                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-                                            </div>
-
-                                            {/* Icon overlay */}
-                                            <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white text-lg shadow-lg">
-                                                {feature.icon}
-                                            </div>
-                                        </div>
-
-                                        {/* Content with friendly dark blue background */}
-                                        <div className="p-6 bg-blue-800/95 border-t border-blue-700">
-                                            <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                                            <p className="text-blue-100 mb-4 leading-relaxed">{feature.description}</p>
-
-
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-
-                        {/* Stats section */}
+                        {/* Hero Header */}
                         <motion.div
                             initial="hidden"
                             animate={isLoaded ? "visible" : "hidden"}
                             variants={fadeIn}
-                            custom={features.length + 1}
-                            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center"
+                            custom={0}
+                            className="text-center mb-20"
                         >
-                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                                <div className="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-                                <div className="text-blue-100">Academic Success</div>
+                            <motion.div
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0.2}
+                                className="inline-block mb-6"
+                            >
+                                <span className="text-6xl md:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300">
+                                    Why Choose
+                                </span>
+                            </motion.div>
+                            <motion.h2
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0.4}
+                                className="text-5xl md:text-7xl font-extrabold text-white mb-6"
+                            >
+                                Amonto Girls Academy?
+                            </motion.h2>
+                            <motion.p
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0.6}
+                                className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed"
+                            >
+                                Where Excellence Meets Empowerment • Transforming Lives Through Education
+                            </motion.p>
+                            <motion.div
+                                initial="hidden"
+                                animate={isLoaded ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                custom={0.8}
+                                className="w-32 h-1 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 mx-auto mt-8 rounded-full"
+                            ></motion.div>
+                        </motion.div>
+
+                        {/* Main Features - Split Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto mb-20">
+                            {/* Left Column - Large Feature Cards */}
+                            <div className="space-y-8">
+                                {features.slice(0, 3).map((feature, index) => {
+                                    const galleryImages = [
+                                        "/gallery/image (5).jpg",
+                                        "/gallery/image (12).jpg",
+                                        "/gallery/image (18).jpg"
+                                    ];
+                                    return (
+                                        <motion.div
+                                            key={index}
+                                            initial="hidden"
+                                            animate={isLoaded ? "visible" : "hidden"}
+                                            variants={fadeIn}
+                                            custom={index + 1}
+                                            className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-yellow-400/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-yellow-500/20"
+                                        >
+                                            {/* Background Image with Parallax Effect */}
+                                            <div className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+                                                <img
+                                                    src={galleryImages[index]}
+                                                    alt={feature.title}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-purple-900/70 to-blue-900/80"></div>
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="relative p-8 md:p-10">
+                                                <div className="flex items-start gap-6">
+                                                    {/* Icon */}
+                                                    <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-400/20 to-pink-400/20 backdrop-blur-sm border border-yellow-400/30 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                                        <div className="text-3xl text-yellow-300">
+                                                            {feature.icon}
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Text Content */}
+                                                    <div className="flex-grow">
+                                                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-yellow-300 transition-colors">
+                                                            {feature.title}
+                                                        </h3>
+                                                        <p className="text-white/90 text-lg leading-relaxed">
+                                                            {feature.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                {/* Decorative Element */}
+                                                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/10 to-pink-400/10 rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
-                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                                <div className="text-4xl font-bold text-yellow-400 mb-2">100%</div>
-                                <div className="text-blue-100">Safe Environment</div>
+
+                            {/* Right Column - Large Feature Cards */}
+                            <div className="space-y-8">
+                                {features.slice(3, 6).map((feature, index) => {
+                                    const galleryImages = [
+                                        "/gallery/image (22).jpg",
+                                        "/gallery/image (28).jpg",
+                                        "/gallery/image (33).jpg"
+                                    ];
+                                    return (
+                                        <motion.div
+                                            key={index + 3}
+                                            initial="hidden"
+                                            animate={isLoaded ? "visible" : "hidden"}
+                                            variants={fadeIn}
+                                            custom={index + 4}
+                                            className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-yellow-400/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-yellow-500/20"
+                                        >
+                                            {/* Background Image */}
+                                            <div className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+                                                <img
+                                                    src={galleryImages[index]}
+                                                    alt={feature.title}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-purple-900/70 to-blue-900/80"></div>
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="relative p-8 md:p-10">
+                                                <div className="flex items-start gap-6">
+                                                    {/* Icon */}
+                                                    <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-400/20 to-pink-400/20 backdrop-blur-sm border border-yellow-400/30 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                                        <div className="text-3xl text-yellow-300">
+                                                            {feature.icon}
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Text Content */}
+                                                    <div className="flex-grow">
+                                                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-yellow-300 transition-colors">
+                                                            {feature.title}
+                                                        </h3>
+                                                        <p className="text-white/90 text-lg leading-relaxed">
+                                                            {feature.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                {/* Decorative Element */}
+                                                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/10 to-pink-400/10 rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
-                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                                <div className="text-4xl font-bold text-yellow-400 mb-2">25+</div>
-                                <div className="text-blue-100">Programs</div>
+                        </div>
+
+                        {/* Stats Section - Enhanced */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={7}
+                            className="max-w-6xl mx-auto"
+                        >
+                            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
+                                <h3 className="text-3xl font-bold text-center text-white mb-12">
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-300">
+                                        Our Impact in Numbers
+                                    </span>
+                                </h3>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    {[
+                                        { value: "98%", label: "Academic Success", icon: "🎓", color: "from-yellow-400 to-orange-500" },
+                                        { value: "100%", label: "Safe Environment", icon: "🛡️", color: "from-green-400 to-emerald-500" },
+                                        { value: "25+", label: "Programs", icon: "📚", color: "from-blue-400 to-cyan-500" },
+                                        { value: "15:1", label: "Student-Teacher Ratio", icon: "👥", color: "from-purple-400 to-pink-500" }
+                                    ].map((stat, index) => (
+                                        <motion.div
+                                            key={index}
+                                            initial="hidden"
+                                            animate={isLoaded ? "visible" : "hidden"}
+                                            variants={fadeIn}
+                                            custom={8 + index}
+                                            className="group text-center p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
+                                        >
+                                            <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform">
+                                                {stat.icon}
+                                            </div>
+                                            <div className={`text-5xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>
+                                                {stat.value}
+                                            </div>
+                                            <div className="text-white/80 font-medium text-sm md:text-base">
+                                                {stat.label}
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="p-6 bg-blue-800/90 rounded-xl border border-blue-700 hover:bg-blue-800 transition-all duration-300">
-                                <div className="text-4xl font-bold text-yellow-400 mb-2">15:1</div>
-                                <div className="text-blue-100">Student-Teacher Ratio</div>
+                        </motion.div>
+
+                        {/* Call to Action */}
+                        <motion.div
+                            initial="hidden"
+                            animate={isLoaded ? "visible" : "hidden"}
+                            variants={fadeIn}
+                            custom={12}
+                            className="mt-20 text-center"
+                        >
+                            <div className="inline-block bg-gradient-to-r from-yellow-500/20 via-pink-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl p-8 border border-yellow-400/30">
+                                <p className="text-white text-xl md:text-2xl font-semibold mb-4">
+                                    Ready to Begin Your Journey?
+                                </p>
+                                <p className="text-white/80 text-lg">
+                                    Join South Sudan's #1 Girls Boarding School
+                                </p>
                             </div>
                         </motion.div>
                     </div>
